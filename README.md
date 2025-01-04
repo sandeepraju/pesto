@@ -1,7 +1,10 @@
-# <img src=".github/assets/pesto.png" alt="Pesto logo" width="25" /> Pesto
+<div align="center">
+<img src=".github/assets/pesto.png" alt="Pesto logo" width="128" />
 
-
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<p1 style="font-size: 2em; font-weight: bold; margin: 0;">Pesto</p1>
+<p><strong><em>A clean and minimal static site template for portfolio websites built with NextJS and Tailwind CSS</em></strong></p>
+</div>
+<br/>
 
 ## Getting Started
 
