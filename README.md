@@ -1,6 +1,6 @@
 <div align="center">
 <img src=".github/assets/pesto.png" alt="Pesto logo" width="256" />
-<p><em>Pesto is a clean and minimal static site template for portfolio websites built with NextJS and Tailwind CSS</em></p>
+<div width="100"><em>Pesto is a clean and minimal static site template for portfolio websites built with NextJS and Tailwind CSS</em></div>
 </div>
 <br/>
 
