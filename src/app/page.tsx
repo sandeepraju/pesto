@@ -2,103 +2,155 @@
 'use client'
 
 import Image from "next/image";
+import { FaGithub, FaLinkedin, FaMedium, FaGithubSquare } from "react-icons/fa";
+import { FaSquareXTwitter } from "react-icons/fa6";
+import { MdOutlineAlternateEmail } from "react-icons/md";
+import { GrDocumentPdf } from "react-icons/gr";
+import { LuFilePenLine, LuSquareUserRound } from "react-icons/lu";
+import { GoCodeSquare } from "react-icons/go";
+import Tilt from 'react-parallax-tilt';
+
+import config from '../data/config.json';
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+    <div className="mx-auto w-full max-w-6xl">
+      <div className="grid grid-rows-[4em_auto_4em] min-h-screen">
+        <header className="flex items-center justify-center">
+        </header>
+        <main className="p-2">
+          <Tilt className="block mx-auto h-auto">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+              className="rounded-full border-8 border-[#f8f9fa] shadow-xl block mx-auto h-auto"
+              src="/profile.jpg"
+              alt={config.name}
+              width={300}
+              height={300}
+              priority
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          </Tilt>
+          <h1 className="text-3xl md:text-5xl font-bold text-center justify-center mx-auto pt-5">{config.name}</h1>
+          <p className="text-center mx-auto w-[32em] pt-5">
+            {config.intro}
+          </p>
+          <ul className="flex space-x-1 text-5xl justify-center mx-auto pt-5">
+            <li>
+              <a
+                className="inline-block transition-transform duration-200 hover:-translate-y-1"
+                href={config.social.linkedin}
+                target="_blank"
+                rel="noopener noreferrer">
+                <FaLinkedin className="scale-75" />
+              </a>
+            </li>
+            <li>
+              <a
+                className="inline-block transition-transform duration-200 hover:-translate-y-1"
+                href={config.social.github}
+                target="_blank"
+                rel="noopener noreferrer">
+                <FaGithubSquare className="scale-75" />
+              </a>
+            </li>
+            <li>
+              <a
+                className="inline-block transition-transform duration-200 hover:-translate-y-1"
+                href={config.social.x}
+                target="_blank"
+                rel="noopener noreferrer">
+                <FaSquareXTwitter className="scale-75" />
+              </a>
+            </li>
+            <li>
+              <a
+                className="inline-block transition-transform duration-200 hover:-translate-y-1"
+                href={config.social.medium}
+                target="_blank"
+                rel="noopener noreferrer">
+                <FaMedium className="scale-75" />
+              </a>
+            </li>
+            <li>
+              <a
+                className="inline-block transition-transform duration-200 hover:-translate-y-1"
+                href={config.social.email}
+                target="_blank"
+                rel="noopener noreferrer">
+                <MdOutlineAlternateEmail className="scale-75" />
+              </a>
+            </li>
+          </ul>
+          <ul className="flex space-x-8 justify-center mx-auto pt-5 text-lg">
+            <li>
+              <a
+                className="inline-block transition-transform duration-200 hover:underline hover:underline-offset-4 decoration-dashed hover:-translate-y-1"
+                href="/about"
+                target="_self"
+                rel="noopener noreferrer">
+                <LuSquareUserRound className="inline-block scale-100 relative -top-[3px]" /> About
+              </a>
+            </li>
+            <li>
+              <a
+                className="inline-block transition-transform duration-200 hover:underline hover:underline-offset-4 decoration-dashed hover:-translate-y-1"
+                href="/projects"
+                target="_self"
+                rel="noopener noreferrer">
+                <GoCodeSquare className="inline-block scale-100 relative -top-[3px]" /> Projects
+              </a>
+            </li>
+            <li>
+              <a
+                className="inline-block transition-transform duration-200 hover:underline hover:underline-offset-4 decoration-dashed hover:-translate-y-1"
+                href="/Giovanni-Pestocchi-Resume.pdf"
+                target="_self"
+                rel="noopener noreferrer">
+                <GrDocumentPdf className="inline-block scale-100 relative -top-[3px]" /> Resume
+              </a>
+            </li>
+            <li>
+              <a
+                className="inline-block transition-transform duration-200 hover:underline hover:underline-offset-4 decoration-dashed hover:-translate-y-1"
+                href="/projects"
+                target="_self"
+                rel="noopener noreferrer">
+                <LuFilePenLine className="inline-block scale-100 relative -top-[3px]" /> Blog
+              </a>
+            </li>
+          </ul>
+        </main>
+        <footer className="flex flex-col items-center justify-center">
+          <p className="text-xs justify-center text-center mx-auto">
+            Based on <a
+              className="hover:underline"
+              href="https://github.com/sandeepraju/pesto"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Pesto theme</a> by <a
+              className="hover:underline"
+              href="https://github.com/sandeepraju"
+              target="_blank"
+              rel="noopener noreferrer"><FaGithub className="inline-block" /> sandeepraju</a>
+
+            <strong> ∙ </strong>
+
+            Powered by <a
+              className="hover:underline"
+              href="https://nextjs.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Next.js</a>, and published on <a
+              className="hover:underline"
+              href={config.fork}
+              target="_blank"
+              rel="noopener noreferrer"
+            >Github</a>
+          </p>
+          <p className="text-xs justify-center text-center mx-auto">
+            {config.name} © {new Date().getFullYear()}
+          </p>
+        </footer>
+      </div>
     </div>
   );
 }
