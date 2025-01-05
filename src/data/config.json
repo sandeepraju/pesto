@@ -1,0 +1,16 @@
+{
+  "name": "Giovanni Pestocchi",
+  "intro": "I’m a software developer by day and a culinary artist by night, experimenting in my kitchen. Pesto is my go-to for everything, from pasta to pizza. In my free time, you can catch me binge-watching movies or working out at the gym!",
+  "fork": "https://github.com/sandeepraju/pesto",
+  "meta": {
+    "title": "Giovanni Pestocchi's website",
+    "description": "Giovanni Pestocchi - Software Developer & Culinary Artist"
+  },
+  "social": {
+    "linkedin": "https://www.linkedin.com/",
+    "github": "https://www.github.com/",
+    "x": "https://x.com/",
+    "medium": "https://medium.com/",
+    "email": "mailto:gpestocchi@example.com"
+  }
+}
