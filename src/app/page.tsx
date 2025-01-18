@@ -2,13 +2,15 @@
 'use client'
 
 import Image from "next/image";
-import { FaGithub, FaLinkedin, FaMedium, FaGithubSquare } from "react-icons/fa";
+import { FaLinkedin, FaMedium, FaGithubSquare } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { MdOutlineAlternateEmail } from "react-icons/md";
 import { GrDocumentPdf } from "react-icons/gr";
 import { LuFilePenLine, LuSquareUserRound } from "react-icons/lu";
 import { GoCodeSquare } from "react-icons/go";
 import Tilt from 'react-parallax-tilt';
+
+import Footer from "./footer";
 
 import config from '../data/config.json';
 
@@ -118,37 +120,7 @@ export default function Home() {
           </li>
         </ul>
       </main>
-      <footer className="flex flex-col items-center justify-center">
-        <p className="text-xs justify-center text-center mx-auto">
-          Based on <a
-            className="hover:underline"
-            href="https://github.com/sandeepraju/pesto"
-            target="_blank"
-            rel="noopener noreferrer"
-          >Pesto theme</a> by <a
-            className="hover:underline"
-            href="https://github.com/sandeepraju"
-            target="_blank"
-            rel="noopener noreferrer"><FaGithub className="inline-block" /> sandeepraju</a>
-
-        </p>
-        <p className="text-xs justify-center text-center mx-auto">
-          Powered by <a
-            className="hover:underline"
-            href="https://nextjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >Next.js</a>, and published on <a
-            className="hover:underline"
-            href={config.fork}
-            target="_blank"
-            rel="noopener noreferrer"
-          >Github</a>
-        </p>
-        <p className="text-xs justify-center text-center mx-auto">
-          {config.name} © {new Date().getFullYear()}
-        </p>
-      </footer>
+      <Footer />
     </div>
   );
 }
