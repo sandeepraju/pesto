@@ -79,8 +79,8 @@ export default function Home() {
             </a>
           </li>
         </ul>
-        <ul className="flex flex-row space-x-8 justify-center mx-auto pt-5 text-lg">
-          <li>
+        <ul className="flex flex-col md:flex-row md:space-x-8 items-center justify-center mx-auto pt-5 text-lg">
+          <li className="p-2">
             <a
               className="inline-block transition-transform duration-200 hover:underline hover:underline-offset-4 decoration-dashed hover:-translate-y-1"
               href="/about"
@@ -89,7 +89,7 @@ export default function Home() {
               <LuSquareUserRound className="inline-block scale-100 relative -top-[3px]" /> About
             </a>
           </li>
-          <li>
+          <li className="p-2">
             <a
               className="inline-block transition-transform duration-200 hover:underline hover:underline-offset-4 decoration-dashed hover:-translate-y-1"
               href="/projects"
@@ -98,7 +98,7 @@ export default function Home() {
               <GoCodeSquare className="inline-block scale-100 relative -top-[3px]" /> Projects
             </a>
           </li>
-          <li>
+          <li className="p-2">
             <a
               className="inline-block transition-transform duration-200 hover:underline hover:underline-offset-4 decoration-dashed hover:-translate-y-1"
               href="/Giovanni-Pestocchi-Resume.pdf"
@@ -107,7 +107,7 @@ export default function Home() {
               <GrDocumentPdf className="inline-block scale-100 relative -top-[3px]" /> Resume
             </a>
           </li>
-          <li>
+          <li className="p-2">
             <a
               className="inline-block transition-transform duration-200 hover:underline hover:underline-offset-4 decoration-dashed hover:-translate-y-1"
               href="/projects"
