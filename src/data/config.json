@@ -12,5 +12,91 @@
     "x": "https://x.com/",
     "medium": "https://medium.com/",
     "email": "mailto:gpestocchi@example.com"
-  }
+  },
+  "projects": [
+    {
+      "title": "Pesto Bot",
+      "description": "PestoBot is your friendly kitchen assistant powered by AI, designed for anyone who loves cooking with pesto. Simply tell PestoBot what ingredients you have at home, and it will suggest personalized pesto recipes that fit your pantry. Whether you’ve got classic basil and pine nuts or an unconventional mix like kale and almonds, PestoBot has you covered. It also provides pairing suggestions for pasta, pizza, and salads, helping you create a complete meal.",
+      "image": "/img/projects/pesto-bot.jpeg",
+      "portrait": true,
+      "url": "https://example.com"
+    },
+    {
+      "title": "Pesto Power",
+      "description": "A mini eBook with 10 unique pesto recipes. From classic Genovese to wild combos like avocado-pumpkin seed, it’s my homage to the greatest sauce ever invented. Download it for free on my site!",
+      "image": "/img/projects/pesto-power.jpeg",
+      "portrait": false,
+      "url": "https://example.com"
+    },
+    {
+      "title": "Dough Mate",
+      "description": "An app for perfecting pizza dough. Enter your flour, hydration level, and proofing time, and DoughMate calculates the ideal ratios and steps. Bonus: It reminds you when it’s time to stretch and fold.",
+      "image": "/img/projects/dough-mate.jpeg",
+      "portrait": true,
+      "url": "https://example.com"
+    },
+    {
+      "title": "Meal Tracker",
+      "description": "A meal-prep tracker designed for gym-goers who love food. It lets you log macros, plan weekly meals, and get tasty recipe suggestions, including pesto-inspired fitness dishes.",
+      "image": "/img/projects/meal-tracker.jpeg",
+      "portrait": false,
+      "url": "https://example.com"
+    },
+    {
+      "title": "Flavor Frame",
+      "description": "A photography app for food lovers. It uses filters and tips to make your food pics pop. I’ve used it to take Instagram-worthy shots of my pesto pizzas and pasta.",
+      "image": "/img/projects/flavor-flame.jpeg",
+      "portrait": true,
+      "url": "https://example.com"
+    },
+    {
+      "title": "Pantry Pal",
+      "description": "PantryPal is the kitchen organization app you never knew you needed. It’s designed to help you reduce food waste and make the most of the ingredients you already have. You start by inputting the items in your pantry, fridge, or freezer. PantryPal then generates recipes based on those ingredients, ensuring nothing goes to waste. Got a bunch of fresh basil about to expire? It’ll suggest whipping up a batch of pesto or adding it to your favorite dishes. The app also has a built-in expiration tracker, so you’ll know when items are close to going bad.",
+      "image": "/img/projects/pantry-pal.jpeg",
+      "portrait": false,
+      "url": "https://example.com"
+    },
+    {
+      "title": "Pasta Planner",
+      "description": "A visual tool for designing pasta dishes. Pick a pasta shape, a sauce (pesto always included!), and toppings, and it generates a step-by-step cooking guide. I use it weekly to plan my pasta nights.",
+      "image": "/img/projects/pasta-planner.jpeg",
+      "portrait": true,
+      "url": "https://example.com"
+    },
+    {
+      "title": "Cine Snacks",
+      "description": "CineSnacks is an app that combines two of my biggest passions: movies and food. It’s designed to help you pair the perfect snack with the mood of your movie night. Select a genre—action, comedy, horror, or drama—and CineSnacks will suggest creative snack ideas to match the vibe. Think pesto popcorn for thrillers, sweet and savory bruschetta for romantic comedies, or smoky BBQ sliders for intense action flicks. The app also includes recipes for each snack, complete with step-by-step instructions and prep time estimates, so you can whip up your treats before hitting play.",
+      "image": "/img/projects/cine-snacks.jpeg",
+      "portrait": false,
+      "url": "https://example.com"
+    },
+    {
+      "title": "Greenify",
+      "description": "A website that promotes using fresh herbs in cooking. It includes a blog, video tutorials, and a community for sharing recipes. Of course, there’s a special section just for pesto enthusiasts.",
+      "image": "/img/projects/greenify.jpeg",
+      "portrait": false,
+      "url": "https://example.com"
+    },
+    {
+      "title": "Macro Mixer",
+      "description": "A kitchen scale app that helps you mix the perfect protein shakes and smoothies. I added a feature for tracking ingredients, so you can balance fitness goals with flavor.",
+      "image": "/img/projects/macro-mixer.jpeg",
+      "portrait": true,
+      "url": "https://example.com"
+    },
+    {
+      "title": "Sauce Spot",
+      "description": "An interactive guide to making sauces from scratch. Choose a cuisine or base (cream, tomatoes, or pesto!), and it walks you through creating your own signature sauce.",
+      "image": "/img/projects/sauce-spot.jpeg",
+      "portrait": false,
+      "url": "https://example.com"
+    },
+    {
+      "title": "Lift Fuel",
+      "description": "A blog for fitness foodies. I share recipes, like my high-protein pesto chicken wraps, and tips for balancing workouts with indulgent eats. It’s proof you can love food and stay fit.",
+      "image": "/img/projects/lift-fuel.jpeg",
+      "portrait": true,
+      "url": "https://example.com"
+    }
+  ]
 }
