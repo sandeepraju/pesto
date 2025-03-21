@@ -2,6 +2,13 @@
 'use client'
 
 import dynamic from 'next/dynamic';
+import Link from 'next/link';
+import { Merriweather } from 'next/font/google';
+import Footer from "../footer";
+import TextProject from "./text-project";
+import ImageProject from "./image-project";
+import config from '../../data/config.json';
+import Nav from '../nav';
 
 // The library 'react-responsive-masonry' manipulates the DOM directly 
 // to render the masonry grid. This causes mismatches with SSR.
@@ -13,34 +20,22 @@ import dynamic from 'next/dynamic';
 const Masonry = dynamic(() => import("react-responsive-masonry").then(mod => mod.default), { ssr: false });
 const ResponsiveMasonry = dynamic(() => import("react-responsive-masonry").then(mod => mod.ResponsiveMasonry), { ssr: false });
 
-import { Merriweather } from 'next/font/google';
-
 const merriweather = Merriweather({
   weight: ["700"],
   subsets: ['latin'],
   variable: '--font-merriweather-serif',
 });
 
-import Footer from "../footer";
-import TextProject from "./text-project";
-import ImageProject from "./image-project";
-
-import config from '../../data/config.json';
-import Nav from '../nav';
-
 export default function Projects() {
-
   return (
     <div className="grid grid-rows-[10em_auto_4em] min-h-screen mx-auto gap-3 md:max-w-screen-lg">
       <header className="text-center justify-center">
         <h1 className={`inline-block text-3xl md:text-5xl font-bold mt-5 font-serif ${merriweather.variable}`}>
-          <a
+          <Link
             className="inline-block"
-            href="/"
-            target="_self"
-            rel="noopener noreferrer">
+            href="/">
             {config.name}
-          </a>
+          </Link>
         </h1>
         <Nav />
         <hr className="inline-block border-t border-gray-300 mx-auto mb-5 w-3/4" />
@@ -48,10 +43,10 @@ export default function Projects() {
       <main className="p-2 w-full max-w-full">
         <h1 className="text-xl md:text-3xl font-bold text-center justify-center mx-auto pb-5">&lt;Projects /&gt;</h1>
         <p className="text-center mx-auto max-w-[40em] pb-16">
-          As a software developer by day and a culinary artist, my passions fuel my creativity both in and out of the kitchen. Whether I’m perfecting pesto recipes or building innovative software solutions, I approach everything with enthusiasm and curiosity. This page is a glimpse into the projects I’ve worked on, inspired by my interests—from tech and problem-solving to food, fitness, and entertainment.
+          As a software developer by day and a culinary artist, my passions fuel my creativity both in and out of the kitchen. Whether I&apos;m perfecting pesto recipes or building innovative software solutions, I approach everything with enthusiasm and curiosity. This page is a glimpse into the projects I&apos;ve worked on, inspired by my interests—from tech and problem-solving to food, fitness, and entertainment.
         </p>
         <ResponsiveMasonry columnsCountBreakPoints={{ 640: 1, 768: 2, 1024: 3 }}>
-          <Masonry sequential={true} gutter='16px'>
+          <Masonry sequential={true} gutter="16px">
             {config.projects.map((project, index) => {
               if (project.image === undefined || project.image === null || project.image.length === 0) {
                 return <TextProject key={index} title={project.title} description={project.description} url={project.url} />
@@ -63,6 +58,6 @@ export default function Projects() {
         </ResponsiveMasonry>
       </main>
       <Footer />
-    </div >
+    </div>
   );
 }

@@ -2,26 +2,20 @@
 'use client'
 
 import Image from "next/image";
+import { Merriweather } from 'next/font/google';
 import { FaLinkedin, FaMedium, FaGithubSquare } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { MdOutlineAlternateEmail } from "react-icons/md";
-import { GrDocumentPdf } from "react-icons/gr";
-import { LuFilePenLine, LuSquareUserRound } from "react-icons/lu";
-import { GoCodeSquare } from "react-icons/go";
 import Tilt from 'react-parallax-tilt';
-
-import { Merriweather } from 'next/font/google';
+import Nav from "./nav";
+import Footer from "./footer";
+import config from '../data/config.json';
 
 const merriweather = Merriweather({
   weight: ["700"],
   subsets: ['latin'],
   variable: '--font-merriweather-serif',
 });
-
-import Footer from "./footer";
-
-import config from '../data/config.json';
-import Nav from "./nav";
 
 export default function Home() {
   return (
