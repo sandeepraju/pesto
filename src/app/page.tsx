@@ -7,8 +7,8 @@ import { FaLinkedin, FaMedium, FaGithubSquare } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { MdOutlineAlternateEmail } from "react-icons/md";
 import Tilt from 'react-parallax-tilt';
-import Nav from "./nav";
-import Footer from "./footer";
+import Nav from "./components/Nav";
+import Footer from "./components/Footer";
 import config from '../data/config.json';
 
 const merriweather = Merriweather({

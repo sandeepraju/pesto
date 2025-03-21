@@ -1,104 +1,82 @@
 // Render everything client side as this is a static-site.
 'use client'
 
-import Image from "next/image";
+import Link from 'next/link';
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import config from '../../data/config.json';
+
+type BlogPost = {
+  title: string;
+  date: string;
+  description: string;
+  url: string;
+};
+
+const blogPosts: BlogPost[] = [
+  {
+    title: "From Git Commits to Garlic Cloves: A Developer's Journey into Culinary Code",
+    date: "March 15, 2024",
+    description: "How my software development principles helped me perfect my signature pesto recipe, and what cooking taught me about clean code.",
+    url: "https://example.com"
+  },
+  {
+    title: "The Perfect Pesto Algorithm: Optimizing Ingredient Ratios",
+    date: "March 10, 2024",
+    description: "A deep dive into the mathematics of pesto making, using data analysis to find the golden ratio of basil to pine nuts.",
+    url: "https://example.com"
+  },
+  {
+    title: "REST APIs and Rest Days: Balancing Tech and Fitness",
+    date: "March 5, 2024",
+    description: "How maintaining a consistent workout routine improved my problem-solving skills and made me a better developer.",
+    url: "https://example.com"
+  },
+  {
+    title: "Movie Night Microservices: Breaking Down Film Analysis Like Code",
+    date: "February 28, 2024",
+    description: "Applying software architecture principles to understand complex movie plots, from inception to implementation.",
+    url: "https://example.com"
+  },
+  {
+    title: "The Developer's Kitchen: Automating My Meal Prep Workflow",
+    date: "February 20, 2024",
+    description: "Building a simple app to streamline my weekly meal planning while maintaining a healthy work-life balance.",
+    url: "https://example.com"
+  }
+];
 
 export default function Blog() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="grid grid-rows-[auto_1fr_auto] min-h-screen mx-auto gap-3 md:max-w-screen-lg">
+      <Header name={config.name} />
+      <main className="p-2 w-full max-w-full">
+        <h1 className="text-xl md:text-3xl font-bold text-center justify-center mx-auto pb-5">Blog</h1>
+        <p className="text-center mx-auto max-w-[40em] pb-16">
+          Welcome to my digital garden where I share thoughts on software development, culinary adventures,
+          fitness journey, and movie analyses. Here, you&apos;ll find the intersection of my passions,
+          from coding solutions to cooking innovations.
+        </p>
+        <div className="max-w-[50em] mx-auto">
+          {blogPosts.map((post, index) => (
+            <article key={index} className="mb-8 p-6 bg-white rounded-lg shadow-lg transform transition-transform duration-200 hover:-translate-y-1">
+              <Link href={post.url} className="block" target="_blank" rel="noopener noreferrer">
+                <div className="flex flex-col space-y-2">
+                  <h2 className="text-xl md:text-2xl font-bold text-gray-800 hover:text-gray-600">
+                    {post.title}
+                  </h2>
+                  <time className="text-sm text-gray-500">{post.date}</time>
+                  <p className="text-gray-600 mt-2">{post.description}</p>
+                  <div className="text-gray-800 text-sm font-medium hover:text-gray-600 mt-2 transition-colors duration-200">
+                    Read more →
+                  </div>
+                </div>
+              </Link>
+            </article>
+          ))}
         </div>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      <Footer />
     </div>
   );
 }

@@ -25,4 +25,4 @@ export default function ImageProject({ title, image, portrait, url }: ImageProje
       </Link>
     </div>
   );
-}
+} 

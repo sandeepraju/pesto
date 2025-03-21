@@ -2,13 +2,11 @@
 'use client'
 
 import dynamic from 'next/dynamic';
-import Link from 'next/link';
-import { Merriweather } from 'next/font/google';
-import Footer from "../footer";
-import TextProject from "./text-project";
-import ImageProject from "./image-project";
+import Footer from "../components/Footer";
+import TextProject from "./TextProject";
+import ImageProject from "./ImageProject";
+import Header from "../components/Header";
 import config from '../../data/config.json';
-import Nav from '../nav';
 
 // The library 'react-responsive-masonry' manipulates the DOM directly 
 // to render the masonry grid. This causes mismatches with SSR.
@@ -20,26 +18,10 @@ import Nav from '../nav';
 const Masonry = dynamic(() => import("react-responsive-masonry").then(mod => mod.default), { ssr: false });
 const ResponsiveMasonry = dynamic(() => import("react-responsive-masonry").then(mod => mod.ResponsiveMasonry), { ssr: false });
 
-const merriweather = Merriweather({
-  weight: ["700"],
-  subsets: ['latin'],
-  variable: '--font-merriweather-serif',
-});
-
 export default function Projects() {
   return (
-    <div className="grid grid-rows-[10em_auto_4em] min-h-screen mx-auto gap-3 md:max-w-screen-lg">
-      <header className="text-center justify-center">
-        <h1 className={`inline-block text-3xl md:text-5xl font-bold mt-5 font-serif ${merriweather.variable}`}>
-          <Link
-            className="inline-block"
-            href="/">
-            {config.name}
-          </Link>
-        </h1>
-        <Nav />
-        <hr className="inline-block border-t border-gray-300 mx-auto mb-5 w-3/4" />
-      </header>
+    <div className="grid grid-rows-[auto_1fr_auto] min-h-screen mx-auto gap-3 md:max-w-screen-lg">
+      <Header name={config.name} />
       <main className="p-2 w-full max-w-full">
         <h1 className="text-xl md:text-3xl font-bold text-center justify-center mx-auto pb-5">&lt;Projects /&gt;</h1>
         <p className="text-center mx-auto max-w-[40em] pb-16">
