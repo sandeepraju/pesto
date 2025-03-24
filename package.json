@@ -15,7 +15,7 @@
     "react-dom": "^19.0.0",
     "react-icons": "^5.4.0",
     "react-parallax-tilt": "^1.7.287",
-    "react-responsive-masonry": "^2.6.0"
+    "react-responsive-masonry": "^2.7.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
