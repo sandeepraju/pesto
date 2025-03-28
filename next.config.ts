@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  reactStrictMode: true,
   // Enable static exports: https://nextjs.org/docs/app/building-your-application/deploying/static-exports
   output: 'export',
   images: {
@@ -10,6 +11,13 @@ const nextConfig: NextConfig = {
   },
   // Ensures "about" exports as "about/index.html"
   trailingSlash: true,
+  experimental: {
+    optimizeCss: true,
+  },
+  webpack: (config) => {
+    config.optimization.minimize = true;
+    return config;
+  },
 };
 
 export default nextConfig;
