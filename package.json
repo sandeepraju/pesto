@@ -18,6 +18,11 @@
     "react-parallax-tilt": "^1.7.311",
     "react-responsive-masonry": "^2.7.1"
   },
+  "overrides": {
+    "next@16.2.6": {
+      "postcss": "8.5.10"
+    }
+  },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@types/node": "^24",
