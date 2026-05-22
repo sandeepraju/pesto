@@ -28,7 +28,7 @@ export default function Projects() {
           As a software developer by day and a culinary artist, my passions fuel my creativity both in and out of the kitchen. Whether I&apos;m perfecting pesto recipes or building innovative software solutions, I approach everything with enthusiasm and curiosity. This page is a glimpse into the projects I&apos;ve worked on, inspired by my interests—from tech and problem-solving to food, fitness, and entertainment.
         </p>
         <ResponsiveMasonry columnsCountBreakPoints={{ 640: 1, 768: 2, 1024: 3 }}>
-          <Masonry sequential={true} gutter="16px">
+          <Masonry gutter="16px">
             {config.projects.map((project, index) => {
               if (project.image === undefined || project.image === null || project.image.length === 0) {
                 return <TextProject key={index} title={project.title} description={project.description} url={project.url} />
