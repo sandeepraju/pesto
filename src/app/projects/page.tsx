@@ -23,7 +23,14 @@ export default function Projects() {
           {config.projects.map((project, index) => (
             <li key={index}>
               {project.image
-                ? <ImageProject url={project.url} image={project.image} title={project.title} portrait={project.portrait} />
+                ? <ImageProject
+                    url={project.url}
+                    image={project.image}
+                    title={project.title}
+                    description={project.description}
+                    portrait={project.portrait}
+                    priority={index < 2}
+                  />
                 : <TextProject title={project.title} description={project.description} url={project.url} />}
             </li>
           ))}
