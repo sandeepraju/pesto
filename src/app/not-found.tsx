@@ -15,7 +15,7 @@ export default function NotFound() {
         <h1 className="text-xl md:text-2xl font-bold mb-3">
           That page wandered out of the pantry.
         </h1>
-        <p className="text-gray-600 max-w-[40em] mb-8">
+        <p className="text-muted-strong max-w-[40em] mb-8">
           The link you followed didn&apos;t lead anywhere on this site. Try one of these instead:
         </p>
         <ul className="flex flex-col md:flex-row md:gap-6 gap-3 items-center">

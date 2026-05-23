@@ -11,6 +11,11 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        muted: "var(--muted)",
+        "muted-strong": "var(--muted-strong)",
+        surface: "var(--surface)",
+        "surface-muted": "var(--surface-muted)",
+        border: "var(--border)",
       },
       fontFamily: {
         sans: ['var(--font-geist-sans)'],

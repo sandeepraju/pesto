@@ -66,7 +66,7 @@ export default function Blog() {
           {blogPosts.map((post, index) => {
             const d = parseDate(post.date);
             return (
-              <article key={index} className="group mb-8 p-6 bg-white rounded-lg shadow-lg transform transition-transform duration-200 hover:-translate-y-1">
+              <article key={index} className="group mb-8 p-6 bg-surface border border-border rounded-lg shadow-lg transform transition-transform duration-200 hover:-translate-y-1">
                 <Link
                   href={post.url}
                   className="block"
@@ -75,14 +75,14 @@ export default function Blog() {
                   aria-label={`${post.title} — ${post.description} (opens in new tab)`}
                 >
                   <div className="flex flex-col space-y-2">
-                    <h2 className="text-xl md:text-2xl font-bold text-gray-800 group-hover:text-gray-600 transition-colors duration-200">
+                    <h2 className="text-xl md:text-2xl font-bold text-foreground group-hover:text-muted-strong transition-colors duration-200">
                       {post.title}
                     </h2>
-                    <time className="text-sm text-gray-500" dateTime={d ? d.toISOString() : undefined}>
+                    <time className="text-sm text-muted" dateTime={d ? d.toISOString() : undefined}>
                       {post.date}
                     </time>
-                    <p className="text-gray-600 mt-2">{post.description}</p>
-                    <div className="inline-flex items-center gap-1 text-gray-900 text-sm font-semibold mt-2 transition-transform duration-200 group-hover:translate-x-1">
+                    <p className="text-muted-strong mt-2">{post.description}</p>
+                    <div className="inline-flex items-center gap-1 text-foreground text-sm font-semibold mt-2 transition-transform duration-200 group-hover:translate-x-1">
                       Read more
                       <span aria-hidden="true">→</span>
                     </div>

@@ -3,7 +3,7 @@ import config from '../../data/config.json';
 
 export default function Footer() {
   return (
-    <footer className="flex flex-col items-center justify-center gap-1 pb-6 pt-8 text-sm text-gray-600">
+    <footer className="flex flex-col items-center justify-center gap-1 pb-6 pt-8 text-sm text-muted-strong">
       <p className="text-center">
         {config.name} © {new Date().getFullYear()} ·{" "}
         <a
@@ -16,7 +16,7 @@ export default function Footer() {
           <FaGithub aria-hidden="true" className="inline-block align-[-2px]" /> Source
         </a>
       </p>
-      <p className="text-xs text-gray-500 text-center">
+      <p className="text-xs text-muted text-center">
         Built on the{" "}
         <a
           className="hover:underline"

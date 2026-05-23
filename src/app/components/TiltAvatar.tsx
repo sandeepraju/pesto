@@ -26,7 +26,7 @@ export default function TiltAvatar({ src, alt, size = 300 }: Props) {
   const reduceMotion = usePrefersReducedMotion();
   const image = (
     <Image
-      className="rounded-full border-8 border-[#f8f9fa] shadow-xl block mx-auto h-auto"
+      className="rounded-full border-8 border-surface-muted shadow-xl block mx-auto h-auto"
       src={src}
       alt={alt}
       width={size}

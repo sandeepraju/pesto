@@ -12,7 +12,7 @@ export default function About() {
   return (
     <PageShell mainClassName="p-2 w-full max-w-full text-center">
         <h1 className="text-xl md:text-3xl font-bold text-center justify-center mx-auto pb-5">About</h1>
-        <div className="md:max-w-[50%] inline-block p-4 bg-white rounded-lg shadow-lg transform transition-transform duration-200 hover:-translate-y-1 mb-10">
+        <div className="md:max-w-[50%] inline-block p-4 bg-surface border border-border rounded-lg shadow-lg transform transition-transform duration-200 hover:-translate-y-1 mb-10">
           <Image
             src="/img/giovanni-pasta.jpeg"
             alt=""
@@ -20,7 +20,7 @@ export default function About() {
             height={400}
             priority
           />
-          <p className="text-center text-gray-600 mt-2 font-medium">Doing what I do best! 🍝</p>
+          <p className="text-center text-muted mt-2 font-medium">Doing what I do best! 🍝</p>
         </div>
         <div className="max-w-[65ch] text-left mx-auto">
           <p className="mb-5">

@@ -18,7 +18,7 @@ export default function Home() {
         <h1 className="text-3xl md:text-5xl font-bold text-center mx-auto mt-6 font-serif">
           {config.name}
         </h1>
-        <p className="text-center mx-auto max-w-[32em] mt-3 text-gray-700">
+        <p className="text-center mx-auto max-w-[32em] mt-3 text-muted-strong">
           {config.intro}
         </p>
 
