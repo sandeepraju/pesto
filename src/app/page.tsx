@@ -2,7 +2,6 @@
 'use client'
 
 import Image from "next/image";
-import { Merriweather } from 'next/font/google';
 import { FaLinkedin, FaMedium, FaGithubSquare } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { MdOutlineAlternateEmail } from "react-icons/md";
@@ -10,12 +9,6 @@ import Tilt from 'react-parallax-tilt';
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import config from '../data/config.json';
-
-const merriweather = Merriweather({
-  weight: ["700"],
-  subsets: ['latin'],
-  variable: '--font-merriweather-serif',
-});
 
 export default function Home() {
   return (
@@ -31,7 +24,7 @@ export default function Home() {
             priority
           />
         </Tilt>
-        <h1 className={`text-3xl md:text-5xl font-bold text-center justify-center mx-auto pt-5 font-serif ${merriweather.variable}`}><strong>{config.name}</strong></h1>
+        <h1 className="text-3xl md:text-5xl font-bold text-center justify-center mx-auto pt-5 font-serif"><strong>{config.name}</strong></h1>
         <p className="text-center mx-auto max-w-[32em] pt-5">
           {config.intro}
         </p>
