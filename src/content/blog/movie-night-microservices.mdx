@@ -1,0 +1,56 @@
+---
+title: "Movie-night microservices: breaking down film analysis like code"
+date: 2026-02-28
+description: "Applying software-architecture principles to understand complex movie plots, from inception to implementation."
+tags: [film, essay, process]
+---
+
+I watched *Inception* again last weekend with a notebook open, and I realised something I'd never articulated: I evaluate films the way I evaluate distributed systems.
+
+This is going to sound insufferable for one paragraph. Stick with me.
+
+## The "good film" architecture checklist
+
+A well-engineered system has clear contracts at its boundaries, predictable behaviour under load, sensible defaults, and a story for failure modes.
+
+A well-made film, it turns out, has exactly the same things.
+
+- **Clear contracts.** The audience needs to know, in the first act, what the rules of this world are. Magic in *Harry Potter* has explicit limits. Inception's dream-rules are explained in act one and obeyed in act three. *Tenet*'s rules are mostly explained, which is why people fight about it.
+- **Predictable under load.** The film escalates without breaking. A character arc set up in scene three pays off in scene thirty. *The Godfather* never violates its own internal logic.
+- **Sensible defaults.** When the script doesn't have time to explain motivation, the actor's *demeanour* fills in. Daniel Day-Lewis in *There Will Be Blood* doesn't need to explain anything; his face is the default value for every undeclared variable in the screenplay.
+- **A story for failure.** When the rules *do* break, the film knows. It's intentional, signposted, and resolved. *Memento* breaks chronological order on purpose. *Mulholland Drive* breaks the reality contract on purpose. Bad films break their own rules by accident and never come back.
+
+## Plot as event-driven architecture
+
+Here's a thing that took me embarrassingly long to notice: most modern thrillers are event-driven systems. There's a central event bus (the plot), services subscribed to it (the characters), and the joy of watching is seeing how each service reacts to the same event.
+
+*Knives Out* is the cleanest example I can think of. The same murder, observed from six different subscribers, each with their own internal state and assumptions. Rian Johnson is not coincidentally also someone who clearly thinks in systems.
+
+Films that don't work usually fail one of two ways:
+
+1. The event bus is too narrow. There's only one storyline. Nothing else happens. (Most romantic comedies after the third act.)
+2. The subscribers don't actually react differently. Every character responds to events the same way. (Half of the Marvel canon.)
+
+## What Christopher Nolan understood early
+
+The reason *Inception* works isn't the dream-within-a-dream conceit. It's that Nolan structured it like a stack of nested function calls. Each layer has its own runtime characteristics — time dilation, gravity behaviour, exit conditions — and the film teaches you the API in act one so it can use it in act three.
+
+A movie where time runs slower the deeper you go is, on paper, impossible to follow. *Inception* is followable because it sets up an explicit interface, demonstrates it on a small example (Cobb teaching Ariadne), and only then composes nested calls.
+
+That's how I want my codebases to teach themselves. Small example first. Then composition.
+
+## The film that taught me to be okay with ambiguity
+
+I'm sceptical of all-the-answers explanations of films, the same way I'm sceptical of all-the-answers documentation. *Mulholland Drive* never explains itself. *Lost in Translation* never explains itself. *Aftersun* never explains itself.
+
+The films that have stayed with me longest are the ones that *deliberately leave undefined behaviour* — that have spec-incomplete sections, on purpose, because the experience of holding the ambiguity is the point.
+
+A good README has the same property. It explains exactly enough. It leaves the rest to the system itself.
+
+## What I cook while I watch
+
+Mostly: bruschetta. Sometimes: pizza. For anything Tarantino-shaped: spaghetti and meatballs. For anything Wong Kar-wai: anything with dim lighting and noodles.
+
+For *Inception*: a single Negroni, made carefully, and pesto pasta with thirty seconds less garlic than the recipe asks for.
+
+A film should pair with a meal the way a system should pair with a runtime — both work better when you've thought about what they're going to coexist with.

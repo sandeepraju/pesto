@@ -1,0 +1,83 @@
+---
+title: "Rebuilding my portfolio in public: 28 commits and one design audit"
+date: 2026-05-22
+description: "What I changed when I treated my own portfolio like a real product — focus rings, dark mode, a 404 page that earns its keep, and the boring fixes nobody talks about."
+tags: [process, design, code]
+---
+
+I redesigned my own portfolio this week. Not the fun rewrite-from-scratch kind — the kind where you sit with the site you already have, write down every single thing that's slightly wrong, and then fix them one at a time until the list runs out.
+
+The list ran out at thirty-eight items.
+
+## Step one: write the audit
+
+Before changing anything, I sat with the live site and wrote a UX/design audit as if I were reviewing a stranger's work. Pages opened with charity. Pages closed with prejudice.
+
+What surprised me wasn't the things I'd missed — it was the things I'd looked at every day for a year without seeing. The body font was *Arial*. I'd loaded Geist via `next/font` and then a CSS rule three lines below set `font-family: Arial, Helvetica, sans-serif` and won the cascade. Every visit to my own site had been Arial. None of my friends had told me.
+
+The audit lives at [`docs/ux-audit.md`](https://github.com/sandeepraju/pesto/blob/main/docs/ux-audit.md) — it's open source.
+
+## Step two: ship the boring fixes first
+
+A pattern I see in personal-site redesigns is starting with the *visible* problems and never reaching the structural ones. I flipped that. The first ten commits were P0 bugs nobody would notice as features but everybody would notice as bugs:
+
+- The font cascade
+- A `className="md: max-w-[70%]"` with a space that silently broke a width cap
+- An empty `<header>` slot creating 64px of dead space at the top of the home page
+- A dead `${image}` interpolation that put a file path into a `className` string
+- No visible focus indicators anywhere
+
+These are not portfolio moments. They're invisible-until-they're-not. I shipped them all before touching a single colour.
+
+## Step three: every interactive element gets a focus ring
+
+This one is hill-I-die-on territory. Open most personal sites, hit Tab, and watch the focus indicator vanish. Yours probably does too. I added a single global rule:
+
+```css
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--foreground);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+```
+
+Eleven lines including the comment. WCAG 2.4.7 passes. Keyboard users can actually navigate.
+
+## Step four: dark mode you didn't have to think about
+
+The original site had dark-mode variables ready, commented out, in the global stylesheet. Classic "I'll do it later." Doing it later took ninety minutes and looked like:
+
+1. Add semantic tokens to the root: `--muted`, `--muted-strong`, `--surface`, `--surface-muted`, `--border`. Each with a light and a dark value.
+2. Expose those as Tailwind utilities in `tailwind.config.ts`.
+3. Sweep through every component and replace hardcoded `text-gray-600`, `bg-white`, `bg-slate-100` with the new tokens.
+
+There is no toggle. The site follows `prefers-color-scheme` and that's it. The simplest thing that respects the OS preference is to honour it.
+
+## Step five: the 404 page is a brand opportunity
+
+Next.js's default 404 is a single line of text on a white background. Mine is now:
+
+> **404**
+> *That page wandered out of the pantry.*
+> → See projects
+> → Read the blog
+> → Back to home
+
+Fifty lines of JSX, zero new dependencies, and one of the things visitors are most likely to actually see if a link breaks.
+
+## What got cut
+
+I kept a `[ ]` list at the bottom of the audit for the bigger items that didn't ship this round:
+
+- A dedicated brand palette (basil green, parmesan cream, olive)
+- Swapping Merriweather for something with more personality
+- A two-column hero rebuild on Home
+- View Transitions on project → case study routes
+
+Those will come. The point of treating the site like a real product is that you don't have to redesign everything in a weekend. You make the next thing better than the last thing. That's it.
+
+## The boring lesson
+
+The biggest improvements weren't bold redesign decisions. They were a font that actually rendered, a focus ring that always showed, a 404 that didn't shrug at you, and a paragraph of body text that wasn't centre-aligned. None of those would headline a Dribbble shot. All of them are why the site is better today than it was last week.
+
+Good work is unglamorous. The audit, the commit history, and the diff are all in the [repo](https://github.com/sandeepraju/pesto) if you want to compare.

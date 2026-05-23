@@ -1,0 +1,65 @@
+---
+title: "The perfect pesto algorithm: optimising ingredient ratios"
+date: 2026-03-10
+description: "A deep dive into the mathematics of pesto making, using data analysis to find the golden ratio of basil to pine nuts."
+tags: [cooking, data, food-science]
+---
+
+I made pesto thirty-eight times last winter. I logged each batch in a spreadsheet. I scored each batch on a 1–10 scale on three axes: balance, brightness, depth.
+
+It turns out that almost every pesto recipe on the internet is wrong about the same thing.
+
+## The setup
+
+The variables in pesto are deceptively few:
+
+- **B** — basil leaves, packed (cups)
+- **N** — pine nuts (cups), with toast level a sub-variable
+- **G** — garlic (cloves), with raw vs. blanched a sub-variable
+- **P** — parmesan, grated (cups)
+- **O** — olive oil (cups), with quality a sub-variable
+- **S** — salt (pinches, applied iteratively)
+
+That's six variables. Six! And yet pesto can go badly wrong.
+
+I held everything constant except two ratios per batch, swept across a sensible range, and tasted. My partner thought I had lost it. They were correct. The results were worth it.
+
+## The headline finding
+
+The classic Genovese ratio is **2 : 1/3 : 1 : 1/2 : 1/2** for B : N : G : P : O (in cups, with G in cloves). My data put the optimum at **2 : 1/3 : 1/2 : 1/2 : 1/2**.
+
+Less garlic.
+
+Every recipe online gives you one or two whole cloves. One or two whole cloves is *raw garlic* in a sauce that doesn't get cooked. Half a clove, blanched for thirty seconds, was the consensus winner across my last twelve batches.
+
+## What the data showed
+
+Some of the patterns were intuitive in hindsight. Others I'd argue about with a chef:
+
+- **Olive oil quality moves the score more than oil quantity.** Going from "supermarket extra virgin" to "single-estate cold-pressed" added ~2 points across every metric. Going from a half-cup to two-thirds of a cup added 0.3.
+- **Toast the pine nuts to gold, not amber.** Amber-toasted pine nuts scored 1.5 lower for depth than gold-toasted. I think the difference is the bitter compounds that start forming at higher Maillard temperatures.
+- **Cheese has a saturation point.** Adding more parmesan above the half-cup-per-2-cup-basil ratio didn't make pesto cheesier; it made it claggier. The score went down.
+- **Texture matters more than ingredients past a point.** Pulse, don't purée. The visible green-and-cream marbling correlates with a +1.2 average score over fully homogenised pesto, even with identical inputs. I suspect it's the bite-by-bite contrast doing the work.
+
+## The "wrongness" of the internet recipe
+
+If you average the top twenty pesto recipes from major food publications, you get this:
+
+> B = 2 cups, N = 1/3 cup, **G = 2 cloves**, P = 1/2 cup, O = 1/2 cup
+
+Two whole raw garlic cloves in a no-heat sauce. By my data that recipe consistently scores 6–7 on balance and 4–5 on brightness, dragged down by garlic dominance.
+
+I don't think this is malicious. I think it's a copy-paste failure mode. Someone, somewhere, in 1998, wrote "2 cloves" because they were making a double batch for a family dinner, and the entire English-speaking internet has been propagating it ever since.
+
+## The recipe my data wants me to make
+
+```
+basil  = 2 cups, packed, dried thoroughly
+nuts   = 1/3 cup, toasted to gold (5 min, medium-low, dry pan)
+garlic = 1/2 clove, blanched 30s in boiling water
+parm   = 1/2 cup, freshly grated
+oil    = 1/2 cup, the most expensive oil you can justify
+salt   = applied iteratively, three times
+```
+
+I'll keep tasting. Next winter's experiment is replacing 25% of the parmesan with pecorino, in 5% increments. I'll let you know.
