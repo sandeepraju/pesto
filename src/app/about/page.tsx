@@ -15,7 +15,7 @@ export default function About() {
         <div className="md:max-w-[50%] inline-block p-4 bg-white rounded-lg shadow-lg transform transition-transform duration-500 hover:scale-105 mb-10">
           <Image
             src="/img/giovanni-pasta.jpeg"
-            alt="Doing what I do best! 🍝"
+            alt=""
             width={600}
             height={400}
             priority
