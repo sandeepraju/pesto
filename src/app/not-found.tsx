@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <PageShell mainClassName="p-2 w-full max-w-full flex flex-col items-center justify-center text-center">
+    <PageShell mainClassName="px-4 py-2 w-full flex flex-col items-center justify-center text-center">
         <p className="font-serif text-6xl md:text-8xl font-bold mb-4">404</p>
         <h1 className="text-xl md:text-2xl font-bold mb-3">
           That page wandered out of the pantry.

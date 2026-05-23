@@ -20,7 +20,7 @@ export default function Home() {
   const recentPosts = getAllPosts().slice(0, 2);
 
   return (
-    <div className="grid grid-rows-[1fr_auto] min-h-screen mx-auto gap-3 md:max-w-screen-lg px-4">
+    <div className="grid grid-cols-[minmax(0,1fr)] grid-rows-[1fr_auto] min-h-screen mx-auto gap-3 w-full md:max-w-screen-lg px-4">
       <main id="main" className="py-10 md:py-16">
         {/* Hero: two-column on md+, stacked on mobile */}
         <section className="grid md:grid-cols-[1.3fr_1fr] gap-10 md:gap-12 items-center mb-20 md:mb-28">

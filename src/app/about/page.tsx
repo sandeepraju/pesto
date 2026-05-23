@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function About() {
   return (
-    <PageShell mainClassName="p-2 w-full max-w-full">
+    <PageShell>
       <div className="max-w-[65ch] mx-auto">
         <h1 className="text-3xl md:text-4xl font-bold font-serif pb-2 text-center">About</h1>
         <p className="text-center text-muted mb-10">
