@@ -12,9 +12,9 @@ export const metadata: Metadata = {
 export default function Projects() {
   return (
     <PageShell>
-        <h1 className="text-xl md:text-3xl font-bold text-center justify-center mx-auto pb-5">Projects</h1>
-        <p className="text-center mx-auto max-w-[40em] pb-16">
-          As a software developer by day and a culinary artist, my passions fuel my creativity both in and out of the kitchen. Whether I&apos;m perfecting pesto recipes or building innovative software solutions, I approach everything with enthusiasm and curiosity. This page is a glimpse into the projects I&apos;ve worked on, inspired by my interests—from tech and problem-solving to food, fitness, and entertainment.
+        <h1 className="text-3xl md:text-4xl font-bold font-serif text-center mx-auto pb-2">Projects</h1>
+        <p className="text-center text-muted mx-auto max-w-[40em] pb-12">
+          Things I&apos;ve built when I wasn&apos;t cooking — and a few that sit on the line between the two. Mostly tools for cooks, eaters, and the occasional gym-goer.
         </p>
         <ul className="columns-1 md:columns-2 lg:columns-3 gap-4 [&>li]:mb-4 [&>li]:break-inside-avoid list-none p-0">
           {config.projects.map((project, index) => (

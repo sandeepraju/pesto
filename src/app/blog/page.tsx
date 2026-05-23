@@ -62,11 +62,9 @@ const blogPosts: BlogPost[] = [
 export default function Blog() {
   return (
     <PageShell>
-        <h1 className="text-xl md:text-3xl font-bold text-center justify-center mx-auto pb-5">Blog</h1>
-        <p className="text-center mx-auto max-w-[40em] pb-16">
-          Welcome to my digital garden where I share thoughts on software development, culinary adventures,
-          fitness journey, and movie analyses. Here, you&apos;ll find the intersection of my passions,
-          from coding solutions to cooking innovations.
+        <h1 className="text-3xl md:text-4xl font-bold font-serif text-center mx-auto pb-2">Blog</h1>
+        <p className="text-center text-muted mx-auto max-w-[40em] pb-12">
+          Notes on software, cooking, and what happens when you mix the two.
         </p>
         <div className="max-w-[50em] mx-auto">
           {blogPosts.map((post, index) => {
