@@ -16,7 +16,6 @@ export default function Header({ name }: HeaderProps) {
         </Link>
       </h1>
       <Nav />
-      <hr className="border-t border-gray-300 mx-auto w-3/4 mt-4" />
     </header>
   );
 }
