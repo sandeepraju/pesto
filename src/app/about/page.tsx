@@ -22,7 +22,7 @@ export default function About() {
           />
           <p className="text-center text-gray-600 mt-2 font-medium">Doing what I do best! 🍝</p>
         </div>
-        <div className="md: max-w-[70%] text-center justify-center mx-auto">
+        <div className="max-w-[65ch] text-left mx-auto">
           <p className="mb-5">
             Hi there! My name is Giovanni Pestocchi, and I like to think of myself as a jack of two trades: software development and culinary adventures. By day, I&apos;m deep in code, solving problems, and creating digital magic. But once the workday ends, I swap my keyboard for a cutting board and dive headfirst into the culinary world. My kitchen is where I let my creativity flow, and trust me, it&apos;s every bit as satisfying as debugging a stubborn piece of code—minus the occasional onion tears!
           </p>
