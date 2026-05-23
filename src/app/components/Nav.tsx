@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { GrDocumentPdf } from "react-icons/gr";
-import { LuFilePenLine, LuSquareUserRound } from "react-icons/lu";
+import { LuFilePenLine, LuSquareUserRound, LuCircleDot } from "react-icons/lu";
 import { GoCodeSquare } from "react-icons/go";
 
 const linkClass =
@@ -8,7 +8,7 @@ const linkClass =
 
 export default function Nav() {
     return (
-        <ul className="flex flex-col md:flex-row md:space-x-8 items-center justify-center mx-auto pt-5 text-lg">
+        <ul className="flex flex-col md:flex-row md:gap-6 items-center justify-center mx-auto pt-5 text-lg">
           <li className="p-2">
             <Link className={linkClass} href="/about">
               <LuSquareUserRound aria-hidden="true" /> About
@@ -20,6 +20,16 @@ export default function Nav() {
             </Link>
           </li>
           <li className="p-2">
+            <Link className={linkClass} href="/blog">
+              <LuFilePenLine aria-hidden="true" /> Blog
+            </Link>
+          </li>
+          <li className="p-2">
+            <Link className={linkClass} href="/now">
+              <LuCircleDot aria-hidden="true" /> Now
+            </Link>
+          </li>
+          <li className="p-2">
             <a
               className={linkClass}
               href="/doc/Giovanni-Pestocchi-Resume.pdf"
@@ -27,11 +37,6 @@ export default function Nav() {
               rel="noopener noreferrer">
               <GrDocumentPdf aria-hidden="true" className="text-current" /> Resume
             </a>
-          </li>
-          <li className="p-2">
-            <Link className={linkClass} href="/blog">
-              <LuFilePenLine aria-hidden="true" /> Blog
-            </Link>
           </li>
         </ul>
     );
