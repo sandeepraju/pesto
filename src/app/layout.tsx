@@ -56,6 +56,24 @@ export default function RootLayout({
         >
           Skip to content
         </a>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: config.name,
+              description: config.meta.description,
+              image: "/img/profile.jpg",
+              sameAs: [
+                config.social.linkedin,
+                config.social.github,
+                config.social.x,
+                config.social.medium,
+              ].filter(Boolean),
+            }),
+          }}
+        />
         {children}
       </body>
     </html>
