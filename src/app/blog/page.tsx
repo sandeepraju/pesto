@@ -1,10 +1,13 @@
-// Render everything client side as this is a static-site.
-'use client'
-
+import type { Metadata } from "next";
 import Link from 'next/link';
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import config from '../../data/config.json';
+
+export const metadata: Metadata = {
+  title: `Blog — ${config.name}`,
+  description: `Writing by ${config.name} on software development, cooking, fitness, and the spaces in between.`,
+};
 
 type BlogPost = {
   title: string;

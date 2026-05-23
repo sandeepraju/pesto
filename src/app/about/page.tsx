@@ -1,10 +1,13 @@
-// Render everything client side as this is a static-site.
-'use client'
-
+import type { Metadata } from "next";
 import Image from 'next/image';
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import config from '../../data/config.json';
+
+export const metadata: Metadata = {
+  title: `About — ${config.name}`,
+  description: `About ${config.name}: software developer, culinary artist, lifelong pesto enthusiast.`,
+};
 
 export default function About() {
   return (
