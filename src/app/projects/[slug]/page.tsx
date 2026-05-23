@@ -12,6 +12,7 @@ import {
   getProjectBySlug,
   getAdjacentProjects,
 } from "../../../lib/projects";
+import { getBlurDataURL } from "../../../lib/blur";
 
 type Params = { slug: string };
 
@@ -81,20 +82,25 @@ export default async function ProjectCaseStudy({ params }: { params: Promise<Par
           <p className="text-lg text-muted-strong">{project.description}</p>
         </header>
 
-        {project.image && (
-          <figure className="mb-10 -mx-2 md:-mx-6">
-            <div className="relative w-full overflow-hidden rounded-lg border border-border shadow-lg aspect-[16/10]">
-              <Image
-                src={project.image}
-                alt={`${project.title} preview`}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 800px"
-                priority
-              />
-            </div>
-          </figure>
-        )}
+        {project.image && (() => {
+          const blurDataURL = getBlurDataURL(project.image);
+          return (
+            <figure className="mb-10 -mx-2 md:-mx-6">
+              <div className="relative w-full overflow-hidden rounded-lg border border-border shadow-lg aspect-[16/10]">
+                <Image
+                  src={project.image}
+                  alt={`${project.title} preview`}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 800px"
+                  priority
+                  placeholder={blurDataURL ? "blur" : "empty"}
+                  blurDataURL={blurDataURL}
+                />
+              </div>
+            </figure>
+          );
+        })()}
 
         <dl className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10 text-sm">
           <div>

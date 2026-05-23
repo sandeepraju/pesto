@@ -9,6 +9,7 @@ import TiltAvatar from "./components/TiltAvatar";
 import config from '../data/config.json';
 import { getAllProjects } from "../lib/projects";
 import { getAllPosts, formatPostDate } from "../lib/blog";
+import { getBlurDataURL } from "../lib/blur";
 
 const socialLinkClass =
   "inline-flex items-center justify-center p-2 text-2xl transition-transform duration-200 hover:-translate-y-1";
@@ -82,7 +83,7 @@ export default function Home() {
           </div>
 
           <div className="order-1 md:order-2 mx-auto md:mx-0 md:justify-self-end">
-            <TiltAvatar src="/img/profile.jpg" alt={config.name} size={300} />
+            <TiltAvatar src="/img/profile.jpg" alt={config.name} size={300} blurDataURL={getBlurDataURL("/img/profile.jpg")} />
           </div>
         </section>
 
@@ -112,6 +113,8 @@ export default function Home() {
                         fill
                         className="object-cover transition-transform duration-300 group-hover:scale-105"
                         sizes="(max-width: 768px) 100vw, 33vw"
+                        placeholder={getBlurDataURL(p.image) ? "blur" : "empty"}
+                        blurDataURL={getBlurDataURL(p.image)}
                       />
                     </div>
                   )}

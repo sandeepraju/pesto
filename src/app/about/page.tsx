@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from 'next/image';
 import PageShell from "../components/PageShell";
 import config from '../../data/config.json';
+import { getBlurDataURL } from "../../lib/blur";
 
 export const metadata: Metadata = {
   title: `About — ${config.name}`,
@@ -26,6 +27,8 @@ export default function About() {
               height={400}
               priority
               className="rounded"
+              placeholder={getBlurDataURL("/img/giovanni-pasta.jpeg") ? "blur" : "empty"}
+              blurDataURL={getBlurDataURL("/img/giovanni-pasta.jpeg")}
             />
           </div>
           <figcaption className="text-center text-muted mt-3 text-sm font-medium">Doing what I do best 🍝</figcaption>

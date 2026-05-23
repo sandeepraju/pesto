@@ -4,9 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node scripts/generate-blur-placeholders.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint src/",
+    "blur": "node scripts/generate-blur-placeholders.mjs",
     "test": "echo \"No tests specified\""
   },
   "dependencies": {

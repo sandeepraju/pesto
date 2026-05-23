@@ -8,6 +8,7 @@ type Props = {
   src: string;
   alt: string;
   size?: number;
+  blurDataURL?: string;
 };
 
 function usePrefersReducedMotion() {
@@ -22,7 +23,7 @@ function usePrefersReducedMotion() {
   return reduce;
 }
 
-export default function TiltAvatar({ src, alt, size = 300 }: Props) {
+export default function TiltAvatar({ src, alt, size = 300, blurDataURL }: Props) {
   const reduceMotion = usePrefersReducedMotion();
   const image = (
     <Image
@@ -32,6 +33,8 @@ export default function TiltAvatar({ src, alt, size = 300 }: Props) {
       width={size}
       height={size}
       priority
+      placeholder={blurDataURL ? "blur" : "empty"}
+      blurDataURL={blurDataURL}
     />
   );
 
