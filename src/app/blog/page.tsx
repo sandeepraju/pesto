@@ -16,6 +16,11 @@ type BlogPost = {
   url: string;
 };
 
+function parseDate(input: string) {
+  const d = new Date(input);
+  return Number.isNaN(d.getTime()) ? null : d;
+}
+
 const blogPosts: BlogPost[] = [
   {
     title: "From Git Commits to Garlic Cloves: A Developer's Journey into Culinary Code",
@@ -61,22 +66,34 @@ export default function Blog() {
           from coding solutions to cooking innovations.
         </p>
         <div className="max-w-[50em] mx-auto">
-          {blogPosts.map((post, index) => (
-            <article key={index} className="mb-8 p-6 bg-white rounded-lg shadow-lg transform transition-transform duration-200 hover:-translate-y-1">
-              <Link href={post.url} className="block" target="_blank" rel="noopener noreferrer">
-                <div className="flex flex-col space-y-2">
-                  <h2 className="text-xl md:text-2xl font-bold text-gray-800 hover:text-gray-600">
-                    {post.title}
-                  </h2>
-                  <time className="text-sm text-gray-500">{post.date}</time>
-                  <p className="text-gray-600 mt-2">{post.description}</p>
-                  <div className="text-gray-800 text-sm font-medium hover:text-gray-600 mt-2 transition-colors duration-200">
-                    Read more →
+          {blogPosts.map((post, index) => {
+            const d = parseDate(post.date);
+            return (
+              <article key={index} className="group mb-8 p-6 bg-white rounded-lg shadow-lg transform transition-transform duration-200 hover:-translate-y-1">
+                <Link
+                  href={post.url}
+                  className="block"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${post.title} — ${post.description} (opens in new tab)`}
+                >
+                  <div className="flex flex-col space-y-2">
+                    <h2 className="text-xl md:text-2xl font-bold text-gray-800 group-hover:text-gray-600 transition-colors duration-200">
+                      {post.title}
+                    </h2>
+                    <time className="text-sm text-gray-500" dateTime={d ? d.toISOString() : undefined}>
+                      {post.date}
+                    </time>
+                    <p className="text-gray-600 mt-2">{post.description}</p>
+                    <div className="inline-flex items-center gap-1 text-gray-900 text-sm font-semibold mt-2 transition-transform duration-200 group-hover:translate-x-1">
+                      Read more
+                      <span aria-hidden="true">→</span>
+                    </div>
                   </div>
-                </div>
-              </Link>
-            </article>
-          ))}
+                </Link>
+              </article>
+            );
+          })}
         </div>
       </main>
       <Footer />
