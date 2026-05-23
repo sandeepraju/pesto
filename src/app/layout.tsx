@@ -20,6 +20,7 @@ const merriweather = Merriweather({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(config.siteUrl),
   title: {
     default: config.meta.title,
     template: `%s · ${config.name}`,

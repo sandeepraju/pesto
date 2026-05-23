@@ -1,0 +1,141 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import PageShell from "../../components/PageShell";
+import config from "../../../data/config.json";
+import {
+  getAllSlugs,
+  getPostBySlug,
+  getRelatedPosts,
+  formatPostDate,
+} from "../../../lib/blog";
+
+type Params = { slug: string };
+
+export function generateStaticParams() {
+  return getAllSlugs().map((slug) => ({ slug }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
+  if (!post) return { title: "Not found" };
+  return {
+    title: `${post.title} — ${config.name}`,
+    description: post.description,
+    openGraph: {
+      type: "article",
+      title: post.title,
+      description: post.description,
+      publishedTime: new Date(post.date).toISOString(),
+      tags: post.tags,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.description,
+    },
+  };
+}
+
+const mdxComponents = {
+  h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
+    <h2 className="text-2xl md:text-3xl font-bold font-serif mt-12 mb-4" {...props} />
+  ),
+  h3: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
+    <h3 className="text-xl font-bold font-serif mt-8 mb-3" {...props} />
+  ),
+  p: (props: React.HTMLAttributes<HTMLParagraphElement>) => (
+    <p className="text-foreground leading-relaxed mb-5" {...props} />
+  ),
+  a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
+    <a className="underline underline-offset-4 decoration-dashed hover:decoration-solid" {...props} />
+  ),
+  ul: (props: React.HTMLAttributes<HTMLUListElement>) => (
+    <ul className="list-disc pl-6 mb-5 space-y-2 marker:text-muted" {...props} />
+  ),
+  ol: (props: React.HTMLAttributes<HTMLOListElement>) => (
+    <ol className="list-decimal pl-6 mb-5 space-y-2 marker:text-muted" {...props} />
+  ),
+  li: (props: React.LiHTMLAttributes<HTMLLIElement>) => <li {...props} />,
+  blockquote: (props: React.BlockquoteHTMLAttributes<HTMLQuoteElement>) => (
+    <blockquote className="border-l-4 border-border pl-4 italic text-muted-strong my-6" {...props} />
+  ),
+  code: (props: React.HTMLAttributes<HTMLElement>) => (
+    <code className="px-1.5 py-0.5 rounded bg-surface-muted text-foreground text-[0.9em] font-mono" {...props} />
+  ),
+  pre: (props: React.HTMLAttributes<HTMLPreElement>) => (
+    <pre className="p-4 my-6 rounded-lg bg-surface-muted border border-border overflow-x-auto text-sm font-mono leading-relaxed" {...props} />
+  ),
+  hr: () => <hr className="my-10 border-border" />,
+  strong: (props: React.HTMLAttributes<HTMLElement>) => <strong className="font-semibold text-foreground" {...props} />,
+  em: (props: React.HTMLAttributes<HTMLElement>) => <em className="italic" {...props} />,
+};
+
+export default async function BlogPost({ params }: { params: Promise<Params> }) {
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
+  if (!post) notFound();
+
+  const related = getRelatedPosts(slug, 2);
+
+  return (
+    <PageShell>
+      <article className="max-w-[65ch] mx-auto pb-16">
+        <header className="mb-10">
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted mb-3">
+            <time dateTime={new Date(post.date).toISOString()}>{formatPostDate(post.date)}</time>
+            <span aria-hidden="true">·</span>
+            <span>{post.readingMinutes} min read</span>
+          </div>
+          <h1 className="text-3xl md:text-5xl font-bold font-serif leading-tight mb-4">{post.title}</h1>
+          <p className="text-lg text-muted-strong">{post.description}</p>
+          {post.tags.length > 0 && (
+            <ul className="flex flex-wrap gap-1.5 mt-5" aria-label="Tags">
+              {post.tags.map((tag) => (
+                <li key={tag} className="px-2 py-0.5 text-xs rounded-full border border-border text-muted-strong">
+                  {tag}
+                </li>
+              ))}
+            </ul>
+          )}
+        </header>
+
+        <div className="text-base md:text-lg">
+          <MDXRemote source={post.body} components={mdxComponents} />
+        </div>
+
+        <footer className="mt-16 pt-8 border-t border-border">
+          <Link
+            href="/blog"
+            className="inline-flex items-center gap-1 text-sm font-semibold hover:underline underline-offset-4 decoration-dashed"
+          >
+            <span aria-hidden="true">←</span> All posts
+          </Link>
+        </footer>
+      </article>
+
+      {related.length > 0 && (
+        <aside className="max-w-[65ch] mx-auto pb-12" aria-labelledby="related-heading">
+          <h2 id="related-heading" className="text-sm uppercase tracking-wider text-muted font-semibold mb-4">
+            Keep reading
+          </h2>
+          <ul className="grid gap-4 md:grid-cols-2">
+            {related.map((r) => (
+              <li key={r.slug}>
+                <Link
+                  href={`/blog/${r.slug}`}
+                  className="group block p-4 rounded-lg border border-border bg-surface transition-transform duration-200 hover:-translate-y-1"
+                >
+                  <p className="text-xs text-muted mb-1">{formatPostDate(r.date)} · {r.readingMinutes} min</p>
+                  <p className="font-serif font-bold text-foreground group-hover:text-muted-strong leading-snug">{r.title}</p>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </aside>
+      )}
+    </PageShell>
+  );
+}
