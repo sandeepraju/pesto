@@ -29,11 +29,7 @@ export default function Footer() {
           aria-label="Source on GitHub (opens in new tab)"
         >
           <FaGithub aria-hidden="true" className="inline-block align-[-2px]" /> Source
-        </a>{" "}
-        ·{" "}
-        <Link href="/colophon" className="hover:underline hover:underline-offset-4 decoration-dashed">
-          Built on the Pesto theme
-        </Link>
+        </a>
       </p>
     </footer>
   );
