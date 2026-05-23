@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from 'next/link';
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import PageShell from "../components/PageShell";
 import config from '../../data/config.json';
 
 export const metadata: Metadata = {
@@ -56,9 +55,7 @@ const blogPosts: BlogPost[] = [
 
 export default function Blog() {
   return (
-    <div className="grid grid-rows-[auto_1fr_auto] min-h-screen mx-auto gap-3 md:max-w-screen-lg">
-      <Header name={config.name} />
-      <main id="main" className="p-2 w-full max-w-full">
+    <PageShell>
         <h1 className="text-xl md:text-3xl font-bold text-center justify-center mx-auto pb-5">Blog</h1>
         <p className="text-center mx-auto max-w-[40em] pb-16">
           Welcome to my digital garden where I share thoughts on software development, culinary adventures,
@@ -95,8 +92,6 @@ export default function Blog() {
             );
           })}
         </div>
-      </main>
-      <Footer />
-    </div>
+    </PageShell>
   );
 }

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
+import PageShell from "./components/PageShell";
 import config from '../data/config.json';
 
 export const metadata: Metadata = {
@@ -11,9 +10,7 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <div className="grid grid-rows-[auto_1fr_auto] min-h-screen mx-auto gap-3 md:max-w-screen-lg">
-      <Header name={config.name} />
-      <main id="main" className="p-2 w-full max-w-full flex flex-col items-center justify-center text-center">
+    <PageShell mainClassName="p-2 w-full max-w-full flex flex-col items-center justify-center text-center">
         <p className="font-serif text-6xl md:text-8xl font-bold mb-4">404</p>
         <h1 className="text-xl md:text-2xl font-bold mb-3">
           That page wandered out of the pantry.
@@ -47,8 +44,6 @@ export default function NotFound() {
             </Link>
           </li>
         </ul>
-      </main>
-      <Footer />
-    </div>
+    </PageShell>
   );
 }

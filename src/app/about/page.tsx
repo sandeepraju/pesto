@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from 'next/image';
-import Footer from "../components/Footer";
-import Header from "../components/Header";
+import PageShell from "../components/PageShell";
 import config from '../../data/config.json';
 
 export const metadata: Metadata = {
@@ -11,9 +10,7 @@ export const metadata: Metadata = {
 
 export default function About() {
   return (
-    <div className="grid grid-rows-[auto_1fr_auto] min-h-screen mx-auto gap-3 md:max-w-screen-lg">
-      <Header name={config.name} />
-      <main id="main" className="p-2 w-full max-w-full text-center justify-center">
+    <PageShell mainClassName="p-2 w-full max-w-full text-center">
         <h1 className="text-xl md:text-3xl font-bold text-center justify-center mx-auto pb-5">About</h1>
         <div className="md:max-w-[50%] inline-block p-4 bg-white rounded-lg shadow-lg transform transition-transform duration-200 hover:-translate-y-1 mb-10">
           <Image
@@ -45,8 +42,6 @@ export default function About() {
             So, that&apos;s me in a nutshell: a software developer with a flair for food, a movie buff with a fitness streak, and someone who believes that life&apos;s best moments often come from blending the unexpected. Let&apos;s connect—over code, over cuisine, or maybe even both!
           </p>
         </div>
-      </main>
-      <Footer />
-    </div>
+    </PageShell>
   );
 }
