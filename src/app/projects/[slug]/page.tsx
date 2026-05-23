@@ -110,7 +110,7 @@ export default async function ProjectCaseStudy({ params }: { params: Promise<Par
             <dd>
               <ul className="flex flex-wrap gap-1.5">
                 {project.tech.map((t) => (
-                  <li key={t} className="px-2 py-0.5 text-xs rounded-full border border-border text-muted-strong">
+                  <li key={t} className="px-2 py-0.5 text-xs rounded-full bg-accent-soft text-accent-strong">
                     {t}
                   </li>
                 ))}

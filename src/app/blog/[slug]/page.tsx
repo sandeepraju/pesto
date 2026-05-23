@@ -94,7 +94,7 @@ export default async function BlogPost({ params }: { params: Promise<Params> }) 
           {post.tags.length > 0 && (
             <ul className="flex flex-wrap gap-1.5 mt-5" aria-label="Tags">
               {post.tags.map((tag) => (
-                <li key={tag} className="px-2 py-0.5 text-xs rounded-full border border-border text-muted-strong">
+                <li key={tag} className="px-2 py-0.5 text-xs rounded-full bg-accent-soft text-accent-strong">
                   {tag}
                 </li>
               ))}

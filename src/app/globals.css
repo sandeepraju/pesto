@@ -3,24 +3,34 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --muted: #6b7280;          /* gray-500 — secondary text */
-  --muted-strong: #374151;   /* gray-700 — slightly stronger secondary text */
-  --surface: #ffffff;        /* card / panel background */
-  --surface-muted: #f1f5f9;  /* slate-100 — text-project bg */
-  --border: #e5e7eb;         /* gray-200 — hairlines */
+  /* Neutrals */
+  --background: #fbfaf7;     /* warm paper, not pure white */
+  --foreground: #1a1a1a;
+  --muted: #6b7280;
+  --muted-strong: #374151;
+  --surface: #ffffff;
+  --surface-muted: #f0eee8;  /* parmesan cream */
+  --border: #e3e0d8;         /* warm hairline */
+
+  /* Accent (brand) */
+  --accent: #3e5c3a;         /* deep basil */
+  --accent-strong: #2c4329;  /* pine */
+  --accent-soft: #d4ddd0;    /* young basil, for subtle washes */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0c0c0d;
-    --foreground: #ededed;
+    --background: #0d0e0c;     /* near-black with a faint warm green */
+    --foreground: #ededeb;
     --muted: #9ca3af;
     --muted-strong: #d1d5db;
-    --surface: #18181b;
-    --surface-muted: #1f1f23;
-    --border: #2a2a2e;
+    --surface: #181a17;
+    --surface-muted: #20231f;
+    --border: #2c2f29;
+
+    --accent: #8ab07f;         /* lifted basil for dark bg */
+    --accent-strong: #b1cda8;
+    --accent-soft: #2a3528;    /* deep basil wash */
   }
 }
 
@@ -28,6 +38,12 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: var(--font-geist-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+/* Variable-font polish for headings using the Fraunces axes loaded in layout.tsx */
+.font-serif {
+  font-feature-settings: "ss01" on, "ss02" on;
+  font-variation-settings: "opsz" 120, "SOFT" 50;
 }
 
 /*

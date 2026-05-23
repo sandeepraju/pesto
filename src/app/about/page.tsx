@@ -72,7 +72,7 @@ export default function About() {
             If you want to talk about code, cuisine, or both —{" "}
             <a
               href={config.social.email}
-              className="underline underline-offset-4 decoration-dashed hover:decoration-solid font-medium"
+              className="text-accent-strong underline underline-offset-4 decoration-dashed hover:decoration-solid font-medium"
             >
               hello@gpestocchi.com
             </a>.

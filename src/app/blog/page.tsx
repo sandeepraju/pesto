@@ -38,7 +38,7 @@ export default function Blog() {
                         <span aria-hidden="true">·</span>
                         <ul className="flex flex-wrap gap-1.5">
                           {post.tags.map((tag) => (
-                            <li key={tag} className="px-2 py-0.5 text-xs rounded-full border border-border text-muted-strong">
+                            <li key={tag} className="px-2 py-0.5 text-xs rounded-full bg-accent-soft text-accent-strong">
                               {tag}
                             </li>
                           ))}
