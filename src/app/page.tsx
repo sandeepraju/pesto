@@ -36,7 +36,14 @@ export default function Home() {
             </p>
             <p className="text-sm text-muted mb-8">
               <span className="inline-block w-1.5 h-1.5 rounded-full bg-accent align-middle mr-2" aria-hidden="true"></span>
-              Currently building <strong className="text-foreground font-semibold">Pesto Bot</strong>, an AI kitchen assistant.
+              Currently building{" "}
+              <Link
+                href="/projects/pesto-bot"
+                className="text-foreground font-semibold underline underline-offset-4 decoration-dashed hover:decoration-solid"
+              >
+                Pesto Bot
+              </Link>
+              , an AI kitchen assistant.
             </p>
 
             <div className="flex flex-wrap justify-center md:justify-start gap-3 mb-8">
@@ -94,7 +101,7 @@ export default function Home() {
             <h2 id="selected-work-heading" className="font-serif font-bold text-2xl md:text-3xl">Selected work</h2>
             <Link
               href="/projects"
-              className="text-sm font-semibold underline underline-offset-4 decoration-dashed hover:decoration-solid"
+              className="inline-block py-1 text-sm font-semibold underline underline-offset-4 decoration-dashed hover:decoration-solid"
             >
               See all →
             </Link>
@@ -135,7 +142,7 @@ export default function Home() {
             <h2 id="recent-writing-heading" className="font-serif font-bold text-2xl md:text-3xl">Recent writing</h2>
             <Link
               href="/blog"
-              className="text-sm font-semibold underline underline-offset-4 decoration-dashed hover:decoration-solid"
+              className="inline-block py-1 text-sm font-semibold underline underline-offset-4 decoration-dashed hover:decoration-solid"
             >
               See all →
             </Link>

@@ -75,7 +75,7 @@ export default async function ProjectCaseStudy({ params }: { params: Promise<Par
         <header className="mb-8">
           <Link
             href="/projects"
-            className="inline-flex items-center gap-1 text-sm text-muted-strong hover:underline underline-offset-4 decoration-dashed mb-6"
+            className="inline-flex items-center gap-1 py-1 text-sm text-muted-strong hover:underline underline-offset-4 decoration-dashed mb-6"
           >
             <span aria-hidden="true">←</span> All projects
           </Link>

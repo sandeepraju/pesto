@@ -110,7 +110,7 @@ export default async function BlogPost({ params }: { params: Promise<Params> }) 
         <footer className="mt-16 pt-8 border-t border-border">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-1 text-sm font-semibold hover:underline underline-offset-4 decoration-dashed"
+            className="inline-flex items-center gap-1 py-1 text-sm font-semibold hover:underline underline-offset-4 decoration-dashed"
           >
             <span aria-hidden="true">←</span> All posts
           </Link>
