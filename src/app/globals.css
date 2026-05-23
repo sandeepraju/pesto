@@ -33,3 +33,22 @@ body {
   outline-offset: 3px;
   border-radius: 2px;
 }
+
+/*
+ * Respect the user's motion preference.
+ *
+ * Users with vestibular sensitivity who set 'prefers-reduced-motion'
+ * in their OS should not see the translate-Y lifts, the slide-in
+ * description, or the parallax tilt. We keep colour/opacity transitions
+ * (which don't induce motion sickness) but flatten the rest.
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

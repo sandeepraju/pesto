@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Tilt from 'react-parallax-tilt';
 
@@ -9,7 +10,35 @@ type Props = {
   size?: number;
 };
 
+function usePrefersReducedMotion() {
+  const [reduce, setReduce] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const onChange = () => setReduce(mq.matches);
+    onChange();
+    mq.addEventListener('change', onChange);
+    return () => mq.removeEventListener('change', onChange);
+  }, []);
+  return reduce;
+}
+
 export default function TiltAvatar({ src, alt, size = 300 }: Props) {
+  const reduceMotion = usePrefersReducedMotion();
+  const image = (
+    <Image
+      className="rounded-full border-8 border-[#f8f9fa] shadow-xl block mx-auto h-auto"
+      src={src}
+      alt={alt}
+      width={size}
+      height={size}
+      priority
+    />
+  );
+
+  if (reduceMotion) {
+    return <div className="block mx-auto h-auto">{image}</div>;
+  }
+
   return (
     <Tilt
       className="block mx-auto h-auto"
@@ -17,14 +46,7 @@ export default function TiltAvatar({ src, alt, size = 300 }: Props) {
       tiltMaxAngleY={8}
       glareEnable={false}
     >
-      <Image
-        className="rounded-full border-8 border-[#f8f9fa] shadow-xl block mx-auto h-auto"
-        src={src}
-        alt={alt}
-        width={size}
-        height={size}
-        priority
-      />
+      {image}
     </Tilt>
   );
 }
