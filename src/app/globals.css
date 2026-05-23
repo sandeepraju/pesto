@@ -47,6 +47,30 @@ body {
 }
 
 /*
+ * Cross-document view transitions.
+ *
+ * Opts into the browser's same-origin navigation animation. Shared
+ * elements that carry the same view-transition-name on the source
+ * and destination pages will morph between them.
+ *
+ * Currently used for:
+ *   - project card → /projects/[slug]: the hero image morphs
+ *   - blog card → /blog/[slug]: the card surface fades
+ *
+ * Guarded by prefers-reduced-motion above (transition-duration is
+ * already squashed there, which the browser respects for VT too).
+ */
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 250ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/*
  * Visible keyboard focus for every interactive element.
  *
  * Uses :focus-visible so mouse clicks don't draw a ring, but tab /

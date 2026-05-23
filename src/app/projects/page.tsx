@@ -29,6 +29,7 @@ export default function Projects() {
                     description={project.description}
                     portrait={project.portrait}
                     priority={index < 2}
+                    transitionName={`project-image-${project.slug}`}
                   />
                 : <TextProject
                     title={project.title}

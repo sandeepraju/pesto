@@ -96,6 +96,7 @@ export default async function ProjectCaseStudy({ params }: { params: Promise<Par
                   priority
                   placeholder={blurDataURL ? "blur" : "empty"}
                   blurDataURL={blurDataURL}
+                  style={{ viewTransitionName: `project-image-${project.slug}` }}
                 />
               </div>
             </figure>
