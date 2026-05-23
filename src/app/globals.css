@@ -20,3 +20,16 @@ body {
   background: var(--background);
   font-family: var(--font-geist-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
 }
+
+/*
+ * Visible keyboard focus for every interactive element.
+ *
+ * Uses :focus-visible so mouse clicks don't draw a ring, but tab /
+ * shift-tab / programmatic focus does. The ring is a 2px outline with
+ * a small offset so it's legible on light, dark, and image backgrounds.
+ */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--foreground);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
