@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from 'next/image';
+import Link from 'next/link';
 import PageShell from "../components/PageShell";
 import config from '../../data/config.json';
 import { getBlurDataURL } from "../../lib/blur";
@@ -48,7 +49,7 @@ export default function About() {
           </p>
           <p className="mb-4">
             Lately I&apos;ve been building <em>Pesto Bot</em>, an AI kitchen assistant for people who, like me, can&apos;t stop putting basil in things. See the{" "}
-            <a href="/projects" className="underline underline-offset-4 decoration-dashed hover:decoration-solid">Projects</a> page for the rest.
+            <Link href="/projects" className="underline underline-offset-4 decoration-dashed hover:decoration-solid">Projects</Link> page for the rest.
           </p>
         </section>
 

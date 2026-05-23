@@ -13,6 +13,7 @@ import {
   getAdjacentProjects,
 } from "../../../lib/projects";
 import { getBlurDataURL } from "../../../lib/blur";
+import { cardSurface, tagPill } from "../../../lib/styles";
 
 type Params = { slug: string };
 
@@ -117,7 +118,7 @@ export default async function ProjectCaseStudy({ params }: { params: Promise<Par
             <dd>
               <ul className="flex flex-wrap gap-1.5">
                 {project.tech.map((t) => (
-                  <li key={t} className="px-2 py-0.5 text-xs rounded-full bg-accent-soft text-accent-strong">
+                  <li key={t} className={tagPill}>
                     {t}
                   </li>
                 ))}
@@ -154,7 +155,7 @@ export default async function ProjectCaseStudy({ params }: { params: Promise<Par
               <li>
                 <Link
                   href={`/projects/${prev.slug}`}
-                  className="group block p-4 rounded-lg border border-border bg-surface transition-transform duration-200 hover:-translate-y-1"
+                  className={`group p-4 ${cardSurface}`}
                 >
                   <p className="text-xs uppercase tracking-wider text-muted mb-1">← Previous</p>
                   <p className="font-serif font-bold text-foreground group-hover:text-muted-strong">{prev.title}</p>
@@ -165,7 +166,7 @@ export default async function ProjectCaseStudy({ params }: { params: Promise<Par
               <li>
                 <Link
                   href={`/projects/${next.slug}`}
-                  className={`group block p-4 rounded-lg border border-border bg-surface transition-transform duration-200 hover:-translate-y-1 ${prev ? "text-right" : ""}`}
+                  className={`group p-4 ${cardSurface} ${prev ? "text-right" : ""}`}
                 >
                   <p className="text-xs uppercase tracking-wider text-muted mb-1">Next →</p>
                   <p className="font-serif font-bold text-foreground group-hover:text-muted-strong">{next.title}</p>

@@ -10,6 +10,7 @@ import config from '../data/config.json';
 import { getAllProjects } from "../lib/projects";
 import { getAllPosts, formatPostDate } from "../lib/blog";
 import { getBlurDataURL } from "../lib/blur";
+import { cardSurface } from "../lib/styles";
 
 const socialLinkClass =
   "inline-flex items-center justify-center p-2 text-2xl transition-transform duration-200 hover:-translate-y-1";
@@ -103,7 +104,7 @@ export default function Home() {
               <li key={p.slug}>
                 <Link
                   href={`/projects/${p.slug}`}
-                  className="group block rounded-lg overflow-hidden border border-border bg-surface shadow-lg transition-transform duration-200 hover:-translate-y-1"
+                  className={`group overflow-hidden ${cardSurface}`}
                 >
                   {p.image && (
                     <div className="relative w-full aspect-[4/3] overflow-hidden">
@@ -144,7 +145,7 @@ export default function Home() {
               <li key={post.slug}>
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="group block p-5 rounded-lg border border-border bg-surface shadow-lg transition-transform duration-200 hover:-translate-y-1"
+                  className={`group p-5 ${cardSurface}`}
                 >
                   <p className="text-xs text-muted mb-2">{formatPostDate(post.date)} · {post.readingMinutes} min</p>
                   <h3 className="font-serif font-bold text-lg mb-2 leading-snug group-hover:text-muted-strong transition-colors duration-200">{post.title}</h3>

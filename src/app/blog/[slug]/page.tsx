@@ -10,6 +10,7 @@ import {
   getRelatedPosts,
   formatPostDate,
 } from "../../../lib/blog";
+import { cardSurface, tagPill } from "../../../lib/styles";
 
 type Params = { slug: string };
 
@@ -94,7 +95,7 @@ export default async function BlogPost({ params }: { params: Promise<Params> }) 
           {post.tags.length > 0 && (
             <ul className="flex flex-wrap gap-1.5 mt-5" aria-label="Tags">
               {post.tags.map((tag) => (
-                <li key={tag} className="px-2 py-0.5 text-xs rounded-full bg-accent-soft text-accent-strong">
+                <li key={tag} className={tagPill}>
                   {tag}
                 </li>
               ))}
@@ -126,7 +127,7 @@ export default async function BlogPost({ params }: { params: Promise<Params> }) 
               <li key={r.slug}>
                 <Link
                   href={`/blog/${r.slug}`}
-                  className="group block p-4 rounded-lg border border-border bg-surface transition-transform duration-200 hover:-translate-y-1"
+                  className={`group p-4 ${cardSurface}`}
                 >
                   <p className="text-xs text-muted mb-1">{formatPostDate(r.date)} · {r.readingMinutes} min</p>
                   <p className="font-serif font-bold text-foreground group-hover:text-muted-strong leading-snug">{r.title}</p>

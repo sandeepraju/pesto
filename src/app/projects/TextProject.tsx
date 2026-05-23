@@ -1,15 +1,15 @@
 import Link from 'next/link';
+import { cardSurfaceMuted } from '../../lib/styles';
 
 type TextProjectProps = {
   title: string;
   description?: string | null;
   href: string;
-  bg?: string;
 };
 
-export default function TextProject({ title, description, href, bg = 'bg-surface-muted' }: TextProjectProps) {
+export default function TextProject({ title, description, href }: TextProjectProps) {
   return (
-    <article className={`group block ${bg} border border-border rounded-lg shadow-lg max-w-full w-full transition-transform duration-200 hover:-translate-y-1`}>
+    <article className={`group ${cardSurfaceMuted} max-w-full w-full`}>
       <Link
         className="block w-full h-full p-6"
         href={href}

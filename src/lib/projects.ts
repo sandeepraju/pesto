@@ -54,7 +54,11 @@ function listSlugs(): string[] {
 export function getAllProjects(): ProjectMeta[] {
   return listSlugs()
     .map((slug) => readProjectFile(slug))
-    .map(({ body: _body, ...meta }) => meta)
+    .map((project) => {
+      const { body, ...meta } = project;
+      void body;
+      return meta;
+    })
     .sort((a, b) => a.order - b.order);
 }
 

@@ -49,7 +49,11 @@ function listSlugs(): string[] {
 export function getAllPosts(): PostMeta[] {
   return listSlugs()
     .map((slug) => readPostFile(slug))
-    .map(({ body: _body, ...meta }) => meta)
+    .map((post) => {
+      const { body, ...meta } = post;
+      void body;
+      return meta;
+    })
     .sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 

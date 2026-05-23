@@ -3,6 +3,7 @@ import Link from 'next/link';
 import PageShell from "../components/PageShell";
 import config from '../../data/config.json';
 import { getAllPosts, formatPostDate } from "../../lib/blog";
+import { cardSurface, tagPill } from "../../lib/styles";
 
 export const metadata: Metadata = {
   title: `Blog — ${config.name}`,
@@ -19,7 +20,7 @@ export default function Blog() {
         </p>
         <div className="max-w-[50em] mx-auto">
           {posts.map((post) => (
-            <article key={post.slug} className="group mb-8 p-6 bg-surface border border-border rounded-lg shadow-lg transform transition-transform duration-200 hover:-translate-y-1">
+            <article key={post.slug} className={`group mb-8 p-6 ${cardSurface}`}>
               <Link
                 href={`/blog/${post.slug}`}
                 className="block"
@@ -38,7 +39,7 @@ export default function Blog() {
                         <span aria-hidden="true">·</span>
                         <ul className="flex flex-wrap gap-1.5">
                           {post.tags.map((tag) => (
-                            <li key={tag} className="px-2 py-0.5 text-xs rounded-full bg-accent-soft text-accent-strong">
+                            <li key={tag} className={tagPill}>
                               {tag}
                             </li>
                           ))}
