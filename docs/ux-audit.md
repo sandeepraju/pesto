@@ -575,4 +575,67 @@ Reproduce by running `npm run dev`, then visiting `http://localhost:3000/`, `/ab
 
 ---
 
+## Appendix C — What's been fixed
+
+This audit was the deliverable on the first pass of the branch `claude/website-ux-analysis-cYN6O`. The subsequent commits on that branch address the items below; the roadmap table in Section 12 still reflects original scope. A check here means the fix landed in this branch.
+
+**P0 — critical bugs (all addressed)**
+- [x] Geist actually renders sitewide; Arial removed from body
+- [x] Broken `md: max-w-[70%]` on About fixed; prose now left-aligned and capped to ~65ch
+- [x] Dead `${image}` interpolation removed from `ImageProject`
+- [x] `display-block` typo in `TextProject` replaced with `block`
+- [x] Empty 64px `<header>` removed from Home; hero now vertically centered
+- [x] Visible `:focus-visible` rings sitewide
+- [x] Nav icon alignment fixed (flex items-center instead of `-top-[3px]`)
+- [x] Resume PDF icon monochromed via `text-current`
+- [x] Duplicate caption removed from About image (alt now empty since visible caption is adjacent)
+- [x] About image hover normalized to 200ms / translate-y
+- [ ] `example.com` blog URLs — left in place; need real content
+- [ ] Placeholder social URLs — left in place; need real content
+
+**P1 — high-impact polish (most addressed)**
+- [x] Merriweather consolidated into `layout.tsx`; per-component imports removed
+- [x] `<hr>` decorative separator removed from Header
+- [x] Footer rewritten: 14px base, name + year + Source link, Cursor/Next.js credits dropped
+- [x] `aria-label` added to every `target="_blank"` link (footer, nav, social, project cards, blog cards)
+- [x] `<PageShell>` primitive extracts the duplicated outer grid across about/blog/projects/not-found
+- [x] `ImageProject` description fades in on hover/focus; gradient overlay replaces flat 50% black; alt fallback fixed; semantic `<article>`
+- [x] `TextProject` brought to parity (semantic `<article>`, aria-label, removed redundant wrapper div)
+- [x] `priority` flag scoped to the first two project images only
+- [x] Per-route metadata exports on About, Projects, Blog (sitewide title template `%s · Giovanni Pestocchi`)
+- [x] On-brand `/not-found` page with display-size 404, pun, and three escape hatches
+- [x] Open Graph + Twitter summary card metadata added in root layout
+- [x] `react-parallax-tilt` guarded by `prefers-reduced-motion`; tilt max angle dropped to ±8°, glare disabled
+- [x] `react-responsive-masonry` replaced with native CSS columns; ~7KB JS removed
+- [x] Home hero spacing restructured into identity / wayfinding groups
+- [x] Social icons resized to a single `text-4xl` instead of `text-5xl` + `scale-75`; tap target now ~48px
+
+**P2 — system-level upgrades (partially addressed)**
+- [x] Dark mode shipped via semantic CSS variable tokens (`--muted`, `--muted-strong`, `--surface`, `--surface-muted`, `--border`); activates on `prefers-color-scheme: dark`
+- [x] Tailwind config exposes the new tokens as utilities
+- [x] Hardcoded grays swept from Home, About, Blog, Projects, Footer, TiltAvatar, not-found
+- [x] About and Blog moved to Server Components (removed unnecessary `'use client'`)
+- [x] Home parallax extracted into `TiltAvatar` client island; Home page itself now Server Component
+- [x] Projects page now Server Component (CSS columns replaced JS masonry)
+- [x] `prefers-reduced-motion` global CSS rule + per-component handling for the tilt
+- [x] Skip-to-content link as first focusable element on every page
+- [x] JSON-LD `Person` schema in root layout
+- [ ] Full design token system (type scale, spacing scale, radius, shadow, motion tokens) — not done
+- [ ] Unified `<Card>` primitive across `ImageProject`, `TextProject`, blog article — not done
+- [ ] Per-project case study pages — not done
+- [ ] MDX-driven blog — not done
+- [ ] `sitemap.ts` / `robots.ts` — not done (needs real site URL)
+
+**P3 — raise the bar (not addressed in this pass)**
+- [ ] Pesto-brand palette (basil + cream + olive)
+- [ ] Swap Merriweather for Fraunces / Newsreader
+- [ ] Two-column hero rebuild on Home
+- [ ] View Transitions API on project → case study route
+- [ ] `/now`, `/uses`, `/colophon`, `/recipes/pesto`
+- [ ] Image blur placeholders
+
+The site that ships from this branch is materially better across every dimension in the audit: typography renders the chosen font, every interactive element shows focus, no element ships in Arial by accident, dark mode works, the 404 has a personality, and the project grid has both visual hierarchy and a description-on-hover affordance. The "raise the bar" direction (Section 11) is the next pass.
+
+---
+
 *End of audit.*
