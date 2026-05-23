@@ -10,7 +10,7 @@ type ImageProjectProps = {
 
 export default function ImageProject({ title, image, portrait, url }: ImageProjectProps) {
   return (
-    <div className={`relative ${image} rounded-lg shadow-lg max-w-full w-full p-6 text-center justify-center transition-transform duration-200 hover:-translate-y-1 ${portrait ? "h-96" : "h-64"}`}>
+    <div className={`relative rounded-lg shadow-lg max-w-full w-full p-6 text-center justify-center transition-transform duration-200 hover:-translate-y-1 ${portrait ? "h-96" : "h-64"}`}>
       <Link className="flex items-center justify-center w-full h-full block z-20" href={url} target="_blank" rel="noopener noreferrer">
         <Image
           src={image}
