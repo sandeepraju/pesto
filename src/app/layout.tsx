@@ -20,8 +20,24 @@ const merriweather = Merriweather({
 });
 
 export const metadata: Metadata = {
-  title: config.meta.title,
+  title: {
+    default: config.meta.title,
+    template: `%s · ${config.name}`,
+  },
   description: config.meta.description,
+  openGraph: {
+    type: "website",
+    title: config.meta.title,
+    description: config.meta.description,
+    siteName: config.name,
+    images: [{ url: "/img/profile.jpg", width: 300, height: 300, alt: config.name }],
+  },
+  twitter: {
+    card: "summary",
+    title: config.meta.title,
+    description: config.meta.description,
+    images: ["/img/profile.jpg"],
+  },
 };
 
 export default function RootLayout({
