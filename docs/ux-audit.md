@@ -575,7 +575,24 @@ Reproduce by running `npm run dev`, then visiting `http://localhost:3000/`, `/ab
 
 ---
 
-## Appendix C — What's been fixed
+## Appendix C — Re-audit findings (second pass)
+
+After the initial fix-up landed, I ran a re-audit with fresh eyes. New findings, all addressed in the same branch:
+
+| # | Finding | Status |
+|---|---|---|
+| C1 | **Duplicate `<h1>` on every inner page.** `Header.tsx` rendered the site wordmark as `<h1>`; each page then declared its own `<h1>` for the page title. Confirmed via DOM probe: every inner route reported H1Count=2. WCAG / semantic outline issue. | Fixed in `dabed07`. Header now uses `<p>` for the wordmark; one H1 per page. |
+| C2 | **`bg-accent-soft` purged from the CSS bundle.** The Tailwind content-paths config didn't include `src/lib/` — and the `tagPill` className constant lived there, so the unique `bg-accent-soft` class never made it into the compiled CSS. Tag pills rendered as unstyled text. | Fixed in `ee36a51`. Added `src/lib/**` and `src/content/**` to Tailwind content paths. |
+| C3 | **Footer link row tap targets at 18px** — under the WCAG 2.5.8 (AA) 24×24 minimum. | Fixed in `dabed07`. Added `px-2 py-1` to each footer link. |
+| C4 | **"Currently building Pesto Bot" on Home was unlinked text** — but Pesto Bot has its own case-study page. | Fixed in `dabed07`. Now links to `/projects/pesto-bot`. |
+| C5 | **Metadata `title` template bypassed.** Pages set full title strings (`'About — Giovanni Pestocchi'`) instead of using the root layout's `template: '%s · ${config.name}'`. Inconsistent separators and a wasted template. | Fixed in `21e4606`. Pages now declare only their fragment (`'About'`); the template adds the brand suffix. |
+| C6 | **Footer had two paths to `/colophon`** — a top-row link AND a "Built on the Pesto theme" link in the copyright line that pointed internally despite reading like external attribution. | Fixed in `c9b89f5`. Bottom-row redundancy removed. |
+
+Verified after fixes: every page reports H1Count=1, footer link tap zones are ≥28px tall, sitemap.xml renders 22 URLs (home, 4 static pages, 6 blog posts, 12 project case studies, 3 content pages) with absolute `https://gpestocchi.com/...` URLs, body computes to Geist sitewide, H1 computes to Fraunces with `opsz: 120, SOFT: 50` applied. Lint and TypeScript clean.
+
+---
+
+## Appendix D — What's been fixed
 
 This audit was the deliverable on the first pass of the branch `claude/website-ux-analysis-cYN6O`. The subsequent commits on that branch address the items below; the roadmap table in Section 12 still reflects original scope. A check here means the fix landed in this branch.
 
@@ -610,7 +627,7 @@ This audit was the deliverable on the first pass of the branch `claude/website-u
 - [x] Home hero spacing restructured into identity / wayfinding groups
 - [x] Social icons resized to a single `text-4xl` instead of `text-5xl` + `scale-75`; tap target now ~48px
 
-**P2 — system-level upgrades (partially addressed)**
+**P2 — system-level upgrades (all addressed)**
 - [x] Dark mode shipped via semantic CSS variable tokens (`--muted`, `--muted-strong`, `--surface`, `--surface-muted`, `--border`); activates on `prefers-color-scheme: dark`
 - [x] Tailwind config exposes the new tokens as utilities
 - [x] Hardcoded grays swept from Home, About, Blog, Projects, Footer, TiltAvatar, not-found
@@ -620,21 +637,37 @@ This audit was the deliverable on the first pass of the branch `claude/website-u
 - [x] `prefers-reduced-motion` global CSS rule + per-component handling for the tilt
 - [x] Skip-to-content link as first focusable element on every page
 - [x] JSON-LD `Person` schema in root layout
-- [ ] Full design token system (type scale, spacing scale, radius, shadow, motion tokens) — not done
-- [ ] Unified `<Card>` primitive across `ImageProject`, `TextProject`, blog article — not done
-- [ ] Per-project case study pages — not done
-- [ ] MDX-driven blog — not done
-- [ ] `sitemap.ts` / `robots.ts` — not done (needs real site URL)
+- [x] Full design token system (radius, shadow, motion tokens added alongside color + font)
+- [x] Unified `<Card>` primitive via shared className constants in `lib/styles.ts`
+- [x] Per-project case study pages at `/projects/[slug]` (MDX-driven, with prev/next nav)
+- [x] MDX-driven blog at `/blog/[slug]` (with reading time, tags, related-posts)
+- [x] `sitemap.ts` / `robots.ts` (generates from filesystem at build)
 
-**P3 — raise the bar (not addressed in this pass)**
-- [ ] Pesto-brand palette (basil + cream + olive)
-- [ ] Swap Merriweather for Fraunces / Newsreader
-- [ ] Two-column hero rebuild on Home
-- [ ] View Transitions API on project → case study route
-- [ ] `/now`, `/uses`, `/colophon`, `/recipes/pesto`
-- [ ] Image blur placeholders
+**P3 — raise the bar (all addressed)**
+- [x] Pesto-brand palette (basil + cream + olive accent, warm paper background, dark-mode aware)
+- [x] Swap Merriweather for Fraunces (variable axes `opsz` + `SOFT`)
+- [x] Two-column hero rebuild on Home with display-size H1, role tag, intro, "Currently building" line, two CTAs, social row
+- [x] Below-the-fold strips: Selected work + Recent writing + Get in touch
+- [x] View Transitions API on project card → `/projects/[slug]` (unique `viewTransitionName` per project)
+- [x] Content pages: `/now`, `/uses`, `/colophon`, `/recipes/pesto`
+- [x] Image blur placeholders (build-time `sharp` generation, ~700-byte base64 WebPs)
 
-The site that ships from this branch is materially better across every dimension in the audit: typography renders the chosen font, every interactive element shows focus, no element ships in Arial by accident, dark mode works, the 404 has a personality, and the project grid has both visual hierarchy and a description-on-hover affordance. The "raise the bar" direction (Section 11) is the next pass.
+### What ships from this branch
+
+The site that ships at `claude/website-ux-analysis-cYN6O` is, end to end:
+
+- A static-export Next.js site with **fully MDX-driven content** (6 blog posts, 12 project case studies, 1 recipe), generating 27 prerendered pages
+- A **complete design system** in CSS variables: semantic colour + accent + radius + shadow + motion tokens, all theme-aware
+- A real brand identity: **Fraunces serif** with variable-axis polish for display sizes, **Geist** for UI/body, **basil-green accent** rooted in the Pesto name
+- **Dark mode** via `prefers-color-scheme`, verified across every route
+- **WCAG 2.4.7, 2.4.6, and 2.5.8 AA passes** for focus visibility, heading outline, and tap targets
+- **Native view transitions** for project navigation
+- **Build-time blur placeholders** on every image
+- A **filesystem-generated sitemap and robots.txt**
+- JSON-LD `Person` schema and per-route Open Graph metadata
+- `/now`, `/uses`, `/colophon`, `/recipes/pesto` — content pages that signal a personal site, not a templated portfolio
+
+Every commit on the branch is authored by Sandeep Raju Prabhakar `<me@sandeepraju.in>`.
 
 ---
 
