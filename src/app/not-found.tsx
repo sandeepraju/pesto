@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageShell from "./components/PageShell";
-import config from '../data/config.json';
 
 export const metadata: Metadata = {
-  title: `404 — ${config.name}`,
+  title: "404",
   description: "That page wandered out of the pantry.",
 };
 

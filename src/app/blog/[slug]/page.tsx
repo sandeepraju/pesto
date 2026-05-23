@@ -3,7 +3,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import PageShell from "../../components/PageShell";
-import config from "../../../data/config.json";
 import {
   getAllSlugs,
   getPostBySlug,
@@ -23,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const post = getPostBySlug(slug);
   if (!post) return { title: "Not found" };
   return {
-    title: `${post.title} — ${config.name}`,
+    title: post.title,
     description: post.description,
     openGraph: {
       type: "article",

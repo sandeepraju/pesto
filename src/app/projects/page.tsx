@@ -6,7 +6,7 @@ import config from '../../data/config.json';
 import { getAllProjects } from "../../lib/projects";
 
 export const metadata: Metadata = {
-  title: `Projects — ${config.name}`,
+  title: "Projects",
   description: `Selected work by ${config.name}: pesto-adjacent software, recipes, tools, and experiments.`,
 };
 

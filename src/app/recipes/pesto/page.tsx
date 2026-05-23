@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import PageShell from "../../components/PageShell";
-import config from "../../../data/config.json";
 
 export const metadata: Metadata = {
-  title: `Pesto recipe — ${config.name}`,
+  title: "Pesto recipe",
   description: "The pesto recipe my data wants me to make. Specific enough to act on, loose enough to forgive.",
   openGraph: {
     type: "article",

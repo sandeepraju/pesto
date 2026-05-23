@@ -3,7 +3,7 @@ import PageShell from "../components/PageShell";
 import config from "../../data/config.json";
 
 export const metadata: Metadata = {
-  title: `Now — ${config.name}`,
+  title: "Now",
   description: `What ${config.name} is doing right now — current focus, current reading, current kitchen experiments.`,
 };
 

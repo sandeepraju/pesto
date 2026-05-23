@@ -6,7 +6,7 @@ import { getAllPosts, formatPostDate } from "../../lib/blog";
 import { cardSurface, tagPill } from "../../lib/styles";
 
 export const metadata: Metadata = {
-  title: `Blog — ${config.name}`,
+  title: "Blog",
   description: `Writing by ${config.name} on software development, cooking, fitness, and the spaces in between.`,
 };
 

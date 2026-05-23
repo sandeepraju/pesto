@@ -6,7 +6,7 @@ import config from '../../data/config.json';
 import { getBlurDataURL } from "../../lib/blur";
 
 export const metadata: Metadata = {
-  title: `About — ${config.name}`,
+  title: "About",
   description: `About ${config.name}: software developer, culinary artist, lifelong pesto enthusiast.`,
 };
 

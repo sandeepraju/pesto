@@ -4,7 +4,7 @@ import PageShell from "../components/PageShell";
 import config from "../../data/config.json";
 
 export const metadata: Metadata = {
-  title: `Colophon — ${config.name}`,
+  title: "Colophon",
   description: `The design system, typography, and tech behind ${config.name}'s site.`,
 };
 

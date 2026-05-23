@@ -6,7 +6,6 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { FaGithub } from "react-icons/fa";
 import { FiExternalLink } from "react-icons/fi";
 import PageShell from "../../components/PageShell";
-import config from "../../../data/config.json";
 import {
   getAllProjectSlugs,
   getProjectBySlug,
@@ -26,7 +25,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const project = getProjectBySlug(slug);
   if (!project) return { title: "Not found" };
   return {
-    title: `${project.title} — ${config.name}`,
+    title: project.title,
     description: project.description,
     openGraph: {
       type: "article",

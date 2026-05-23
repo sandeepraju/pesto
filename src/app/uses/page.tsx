@@ -3,7 +3,7 @@ import PageShell from "../components/PageShell";
 import config from "../../data/config.json";
 
 export const metadata: Metadata = {
-  title: `Uses — ${config.name}`,
+  title: "Uses",
   description: `Hardware, software, and kitchen tools ${config.name} actually uses every day.`,
 };
 
