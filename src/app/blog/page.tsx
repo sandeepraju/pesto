@@ -22,34 +22,40 @@ function parseDate(input: string) {
 
 const blogPosts: BlogPost[] = [
   {
-    title: "From Git Commits to Garlic Cloves: A Developer's Journey into Culinary Code",
-    date: "March 15, 2024",
-    description: "How my software development principles helped me perfect my signature pesto recipe, and what cooking taught me about clean code.",
-    url: "https://example.com"
+    title: "Rebuilding my portfolio in public: 28 commits and one design audit",
+    date: "May 22, 2026",
+    description: "What I changed when I treated my own portfolio like a real product — focus rings, dark mode, a 404 page that earns its keep, and the boring fixes nobody talks about.",
+    url: "https://medium.com/@gpestocchi/rebuilding-my-portfolio-in-public"
   },
   {
-    title: "The Perfect Pesto Algorithm: Optimizing Ingredient Ratios",
-    date: "March 10, 2024",
+    title: "From Git commits to garlic cloves: a developer's journey into culinary code",
+    date: "March 15, 2026",
+    description: "How my software-development principles helped me perfect my signature pesto recipe, and what cooking taught me about clean code.",
+    url: "https://medium.com/@gpestocchi/from-git-commits-to-garlic-cloves"
+  },
+  {
+    title: "The perfect pesto algorithm: optimising ingredient ratios",
+    date: "March 10, 2026",
     description: "A deep dive into the mathematics of pesto making, using data analysis to find the golden ratio of basil to pine nuts.",
-    url: "https://example.com"
+    url: "https://medium.com/@gpestocchi/the-perfect-pesto-algorithm"
   },
   {
-    title: "REST APIs and Rest Days: Balancing Tech and Fitness",
-    date: "March 5, 2024",
-    description: "How maintaining a consistent workout routine improved my problem-solving skills and made me a better developer.",
-    url: "https://example.com"
+    title: "REST APIs and rest days: balancing tech and fitness",
+    date: "March 5, 2026",
+    description: "How a consistent workout routine improved my problem-solving and made me a better developer.",
+    url: "https://medium.com/@gpestocchi/rest-apis-and-rest-days"
   },
   {
-    title: "Movie Night Microservices: Breaking Down Film Analysis Like Code",
-    date: "February 28, 2024",
-    description: "Applying software architecture principles to understand complex movie plots, from inception to implementation.",
-    url: "https://example.com"
+    title: "Movie-night microservices: breaking down film analysis like code",
+    date: "February 28, 2026",
+    description: "Applying software-architecture principles to understand complex movie plots, from inception to implementation.",
+    url: "https://medium.com/@gpestocchi/movie-night-microservices"
   },
   {
-    title: "The Developer's Kitchen: Automating My Meal Prep Workflow",
-    date: "February 20, 2024",
-    description: "Building a simple app to streamline my weekly meal planning while maintaining a healthy work-life balance.",
-    url: "https://example.com"
+    title: "The developer's kitchen: automating my meal-prep workflow",
+    date: "February 20, 2026",
+    description: "Building a simple app to streamline weekly meal planning without sacrificing a balanced life.",
+    url: "https://medium.com/@gpestocchi/the-developers-kitchen"
   }
 ];
 
