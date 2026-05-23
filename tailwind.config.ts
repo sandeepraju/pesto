@@ -25,6 +25,25 @@ export default {
         mono: ['var(--font-geist-mono)'],
         serif: ['var(--font-serif)', 'Fraunces', 'Georgia', 'serif'],
       },
+      borderRadius: {
+        sm: 'var(--radius-sm)',
+        md: 'var(--radius-md)',
+        lg: 'var(--radius-lg)',
+      },
+      boxShadow: {
+        sm: 'var(--shadow-sm)',
+        md: 'var(--shadow-md)',
+        lg: 'var(--shadow-lg)',
+        xl: 'var(--shadow-xl)',
+      },
+      transitionTimingFunction: {
+        'out-soft': 'var(--ease-out)',
+      },
+      transitionDuration: {
+        fast: 'var(--duration-fast)',
+        base: 'var(--duration-base)',
+        slow: 'var(--duration-slow)',
+      },
     },
   },
   plugins: [],
