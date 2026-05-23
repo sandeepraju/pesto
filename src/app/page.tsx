@@ -19,10 +19,8 @@ const merriweather = Merriweather({
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[4em_auto_4em] min-h-screen mx-auto gap-3 md:max-w-screen-lg">
-      <header className="flex items-center justify-center">
-      </header>
-      <main className="p-2">
+    <div className="grid grid-rows-[1fr_auto] min-h-screen mx-auto gap-3 md:max-w-screen-lg">
+      <main className="p-2 flex flex-col justify-center">
         <Tilt className="block mx-auto h-auto">
           <Image
             className="rounded-full border-8 border-[#f8f9fa] shadow-xl block mx-auto h-auto"
