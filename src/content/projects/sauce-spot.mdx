@@ -1,0 +1,23 @@
+---
+title: "Sauce Spot"
+description: "An interactive guide to making sauces from scratch. Pick a cuisine or base (cream, tomatoes, or pesto) and Sauce Spot walks you through your signature sauce."
+image: /img/projects/sauce-spot.jpeg
+portrait: false
+year: 2023
+role: "Solo build"
+tech: [SvelteKit, Tailwind]
+url: https://github.com/gpestocchi/sauce-spot
+order: 11
+---
+
+## What it is
+
+A choose-your-own-adventure sauce builder. Pick a base, pick a flavour profile, pick a finish — the app walks you through a five-step recipe.
+
+## The branching logic
+
+There's a decision tree under the hood with around 40 leaves (final sauces). Most paths share early steps (the soffritto, the deglaze, the reduce) and diverge only on the finish. The reuse keeps the content maintainable.
+
+## The "Sauce Spot rule"
+
+I started with seventy sauces. I cut it to forty by enforcing one rule: every sauce on the site has to take fewer than thirty minutes from scratch. If it needs an overnight stock or a 4-hour reduction, it isn't a weeknight sauce, and Sauce Spot is a weeknight app.

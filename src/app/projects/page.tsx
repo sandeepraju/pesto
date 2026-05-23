@@ -3,6 +3,7 @@ import PageShell from "../components/PageShell";
 import TextProject from "./TextProject";
 import ImageProject from "./ImageProject";
 import config from '../../data/config.json';
+import { getAllProjects } from "../../lib/projects";
 
 export const metadata: Metadata = {
   title: `Projects — ${config.name}`,
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default function Projects() {
+  const projects = getAllProjects();
   return (
     <PageShell>
         <h1 className="text-3xl md:text-4xl font-bold font-serif text-center mx-auto pb-2">Projects</h1>
@@ -17,18 +19,22 @@ export default function Projects() {
           Things I&apos;ve built when I wasn&apos;t cooking — and a few that sit on the line between the two. Mostly tools for cooks, eaters, and the occasional gym-goer.
         </p>
         <ul className="columns-1 md:columns-2 lg:columns-3 gap-4 [&>li]:mb-4 [&>li]:break-inside-avoid list-none p-0">
-          {config.projects.map((project, index) => (
-            <li key={index}>
+          {projects.map((project, index) => (
+            <li key={project.slug}>
               {project.image
                 ? <ImageProject
-                    url={project.url}
+                    href={`/projects/${project.slug}`}
                     image={project.image}
                     title={project.title}
                     description={project.description}
                     portrait={project.portrait}
                     priority={index < 2}
                   />
-                : <TextProject title={project.title} description={project.description} url={project.url} />}
+                : <TextProject
+                    title={project.title}
+                    description={project.description}
+                    href={`/projects/${project.slug}`}
+                  />}
             </li>
           ))}
         </ul>

@@ -1,15 +1,9 @@
 import type { MetadataRoute } from "next";
 import config from "../data/config.json";
 import { getAllPosts } from "../lib/blog";
+import { getAllProjects } from "../lib/projects";
 
 export const dynamic = "force-static";
-
-function slugify(input: string): string {
-  return input
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-}
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = config.siteUrl.replace(/\/+$/, "");
@@ -29,8 +23,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  const projectRoutes: MetadataRoute.Sitemap = config.projects.map((project) => ({
-    url: `${base}/projects/${slugify(project.title)}`,
+  const projectRoutes: MetadataRoute.Sitemap = getAllProjects().map((project) => ({
+    url: `${base}/projects/${project.slug}`,
     lastModified: now,
     changeFrequency: "yearly",
     priority: 0.6,
