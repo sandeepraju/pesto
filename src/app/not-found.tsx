@@ -13,7 +13,7 @@ export default function NotFound() {
   return (
     <div className="grid grid-rows-[auto_1fr_auto] min-h-screen mx-auto gap-3 md:max-w-screen-lg">
       <Header name={config.name} />
-      <main className="p-2 w-full max-w-full flex flex-col items-center justify-center text-center">
+      <main id="main" className="p-2 w-full max-w-full flex flex-col items-center justify-center text-center">
         <p className="font-serif text-6xl md:text-8xl font-bold mb-4">404</p>
         <h1 className="text-xl md:text-2xl font-bold mb-3">
           That page wandered out of the pantry.

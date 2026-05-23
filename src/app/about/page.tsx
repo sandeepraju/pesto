@@ -13,7 +13,7 @@ export default function About() {
   return (
     <div className="grid grid-rows-[auto_1fr_auto] min-h-screen mx-auto gap-3 md:max-w-screen-lg">
       <Header name={config.name} />
-      <main className="p-2 w-full max-w-full text-center justify-center">
+      <main id="main" className="p-2 w-full max-w-full text-center justify-center">
         <h1 className="text-xl md:text-3xl font-bold text-center justify-center mx-auto pb-5">About</h1>
         <div className="md:max-w-[50%] inline-block p-4 bg-white rounded-lg shadow-lg transform transition-transform duration-200 hover:-translate-y-1 mb-10">
           <Image

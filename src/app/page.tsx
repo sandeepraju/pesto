@@ -12,7 +12,7 @@ const socialLinkClass =
 export default function Home() {
   return (
     <div className="grid grid-rows-[1fr_auto] min-h-screen mx-auto gap-3 md:max-w-screen-lg">
-      <main className="p-2 flex flex-col justify-center">
+      <main id="main" className="p-2 flex flex-col justify-center">
         {/* Identity: photo + name + intro are one visual group */}
         <TiltAvatar src="/img/profile.jpg" alt={config.name} size={240} />
         <h1 className="text-3xl md:text-5xl font-bold text-center mx-auto mt-6 font-serif">
