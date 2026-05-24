@@ -19,7 +19,7 @@ export default function About() {
           Software developer · Culinary artist · Brooklyn, NY
         </p>
 
-        <figure className="mb-12 mx-auto">
+        <figure className="mb-12 mx-auto max-w-[600px]">
           <div className="p-4 bg-surface border border-border rounded-lg shadow-lg transition-transform duration-200 hover:-translate-y-1">
             <Image
               src="/img/giovanni-pasta.jpeg"
@@ -27,7 +27,8 @@ export default function About() {
               width={600}
               height={400}
               priority
-              className="rounded"
+              sizes="(max-width: 640px) 100vw, 600px"
+              className="rounded w-full h-auto"
               placeholder={getBlurDataURL("/img/giovanni-pasta.jpeg") ? "blur" : "empty"}
               blurDataURL={getBlurDataURL("/img/giovanni-pasta.jpeg")}
             />
