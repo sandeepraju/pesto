@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import PageShell from "../../components/PageShell";
+import config from "../../../data/config.json";
 import {
   getAllSlugs,
   getPostBySlug,
@@ -80,8 +81,43 @@ export default async function BlogPost({ params }: { params: Promise<Params> }) 
 
   const related = getRelatedPosts(slug, 2);
 
+  const siteUrl = config.siteUrl.replace(/\/+$/, "");
+  const postUrl = `${siteUrl}/blog/${post.slug}`;
+  const isoDate = new Date(post.date).toISOString();
+  const blogPostingSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.description,
+    datePublished: isoDate,
+    dateModified: isoDate,
+    keywords: post.tags.join(", "),
+    author: {
+      "@type": "Person",
+      name: config.name,
+      url: siteUrl,
+    },
+    publisher: {
+      "@type": "Person",
+      name: config.name,
+      url: siteUrl,
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": postUrl,
+    },
+    url: postUrl,
+    image: `${siteUrl}/img/profile.jpg`,
+    inLanguage: "en",
+    wordCount: post.body.trim().split(/\s+/).length,
+  };
+
   return (
     <PageShell>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingSchema) }}
+      />
       <article className="max-w-[65ch] mx-auto pb-16">
         <header className="mb-10">
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted mb-3">
