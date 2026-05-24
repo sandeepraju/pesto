@@ -27,7 +27,7 @@ export default function TiltAvatar({ src, alt, size = 300, blurDataURL }: Props)
   const reduceMotion = usePrefersReducedMotion();
   const image = (
     <Image
-      className="rounded-full ring-1 ring-accent/20 border-8 border-surface shadow-xl block mx-auto h-auto"
+      className="rounded-full ring-1 ring-[color-mix(in_srgb,var(--accent),transparent_75%)] border-8 border-surface shadow-xl block mx-auto h-auto"
       src={src}
       alt={alt}
       width={size}
