@@ -592,82 +592,119 @@ Verified after fixes: every page reports H1Count=1, footer link tap zones are �
 
 ---
 
-## Appendix D — What's been fixed
+## Appendix D — Status of every roadmap item
 
-This audit was the deliverable on the first pass of the branch `claude/website-ux-analysis-cYN6O`. The subsequent commits on that branch address the items below; the roadmap table in Section 12 still reflects original scope. A check here means the fix landed in this branch.
+This audit was the deliverable on the first pass of the branch `claude/website-ux-analysis-cYN6O`. Subsequent commits address the items below. This appendix is the single source of truth for what's done, what's partial, and what's still open. The roadmap table in Section 12 reflects the original scope and is preserved unchanged.
 
-**P0 — critical bugs (all addressed)**
-- [x] Geist actually renders sitewide; Arial removed from body
-- [x] Broken `md: max-w-[70%]` on About fixed; prose now left-aligned and capped to ~65ch
-- [x] Dead `${image}` interpolation removed from `ImageProject`
-- [x] `display-block` typo in `TextProject` replaced with `block`
-- [x] Empty 64px `<header>` removed from Home; hero now vertically centered
-- [x] Visible `:focus-visible` rings sitewide
-- [x] Nav icon alignment fixed (flex items-center instead of `-top-[3px]`)
-- [x] Resume PDF icon monochromed via `text-current`
-- [x] Duplicate caption removed from About image (alt now empty since visible caption is adjacent)
-- [x] About image hover normalized to 200ms / translate-y
-- [ ] `example.com` blog URLs — left in place; need real content
-- [ ] Placeholder social URLs — left in place; need real content
+Legend: ✅ done · 🟡 partial · ⬜ open
 
-**P1 — high-impact polish (most addressed)**
-- [x] Merriweather consolidated into `layout.tsx`; per-component imports removed
-- [x] `<hr>` decorative separator removed from Header
-- [x] Footer rewritten: 14px base, name + year + Source link, Cursor/Next.js credits dropped
-- [x] `aria-label` added to every `target="_blank"` link (footer, nav, social, project cards, blog cards)
-- [x] `<PageShell>` primitive extracts the duplicated outer grid across about/blog/projects/not-found
-- [x] `ImageProject` description fades in on hover/focus; gradient overlay replaces flat 50% black; alt fallback fixed; semantic `<article>`
-- [x] `TextProject` brought to parity (semantic `<article>`, aria-label, removed redundant wrapper div)
-- [x] `priority` flag scoped to the first two project images only
-- [x] Per-route metadata exports on About, Projects, Blog (sitewide title template `%s · Giovanni Pestocchi`)
-- [x] On-brand `/not-found` page with display-size 404, pun, and three escape hatches
-- [x] Open Graph + Twitter summary card metadata added in root layout
-- [x] `react-parallax-tilt` guarded by `prefers-reduced-motion`; tilt max angle dropped to ±8°, glare disabled
-- [x] `react-responsive-masonry` replaced with native CSS columns; ~7KB JS removed
-- [x] Home hero spacing restructured into identity / wayfinding groups
-- [x] Social icons resized to a single `text-4xl` instead of `text-5xl` + `scale-75`; tap target now ~48px
+### P0 — critical bugs
 
-**P2 — system-level upgrades (all addressed)**
-- [x] Dark mode shipped via semantic CSS variable tokens (`--muted`, `--muted-strong`, `--surface`, `--surface-muted`, `--border`); activates on `prefers-color-scheme: dark`
-- [x] Tailwind config exposes the new tokens as utilities
-- [x] Hardcoded grays swept from Home, About, Blog, Projects, Footer, TiltAvatar, not-found
-- [x] About and Blog moved to Server Components (removed unnecessary `'use client'`)
-- [x] Home parallax extracted into `TiltAvatar` client island; Home page itself now Server Component
-- [x] Projects page now Server Component (CSS columns replaced JS masonry)
-- [x] `prefers-reduced-motion` global CSS rule + per-component handling for the tilt
-- [x] Skip-to-content link as first focusable element on every page
-- [x] JSON-LD `Person` schema in root layout
-- [x] Full design token system (radius, shadow, motion tokens added alongside color + font)
-- [x] Unified `<Card>` primitive via shared className constants in `lib/styles.ts`
-- [x] Per-project case study pages at `/projects/[slug]` (MDX-driven, with prev/next nav)
-- [x] MDX-driven blog at `/blog/[slug]` (with reading time, tags, related-posts)
-- [x] `sitemap.ts` / `robots.ts` (generates from filesystem at build)
+- ✅ Geist actually renders sitewide; Arial removed from body
+- ✅ Broken `md: max-w-[70%]` on About fixed; prose now left-aligned and capped to ~65ch
+- ✅ Dead `${image}` interpolation removed from `ImageProject`
+- ✅ `display-block` typo in `TextProject` replaced with `block`
+- ✅ Empty 64px `<header>` removed from Home; hero now vertically centered
+- ✅ Visible `:focus-visible` rings sitewide
+- ✅ Nav icon alignment fixed (flex items-center instead of `-top-[3px]`)
+- ✅ Resume PDF icon monochromed via `text-current`
+- ✅ Duplicate caption removed from About image (alt now empty since visible caption is adjacent)
+- ✅ About image hover normalized to 200ms / translate-y
+- ✅ `example.com` blog URLs gone — blog is now MDX-driven; posts link to internal `/blog/[slug]` routes
+- ✅ Placeholder social URLs replaced with realistic mock handles in `config.json`
 
-**P3 — raise the bar (all addressed)**
-- [x] Pesto-brand palette (basil + cream + olive accent, warm paper background, dark-mode aware)
-- [x] Swap Merriweather for Fraunces (variable axes `opsz` + `SOFT`)
-- [x] Two-column hero rebuild on Home with display-size H1, role tag, intro, "Currently building" line, two CTAs, social row
-- [x] Below-the-fold strips: Selected work + Recent writing + Get in touch
-- [x] View Transitions API on project card → `/projects/[slug]` (unique `viewTransitionName` per project)
-- [x] Content pages: `/now`, `/uses`, `/colophon`, `/recipes/pesto`
-- [x] Image blur placeholders (build-time `sharp` generation, ~700-byte base64 WebPs)
+### P1 — high-impact polish
 
-### What ships from this branch
+- ✅ Merriweather consolidated into `layout.tsx`; per-component imports removed (later swapped for Fraunces)
+- ✅ `<hr>` decorative separator removed from Header
+- ✅ Footer rewritten: 14px base, name + year + Source link, Cursor/Next.js credits dropped
+- ✅ `aria-label` added to every `target="_blank"` link (footer, nav, social, project cards, blog cards)
+- ✅ `<PageShell>` primitive extracts the duplicated outer grid across about/blog/projects/not-found
+- ✅ `ImageProject` description fades in on hover/focus; gradient overlay replaces flat 50% black; alt fallback fixed; semantic `<article>`
+- ✅ `TextProject` brought to parity (semantic `<article>`, aria-label, removed redundant wrapper div)
+- ✅ `priority` flag scoped to the first two project images only
+- ✅ Per-route metadata exports on About, Projects, Blog (sitewide title template `%s · Giovanni Pestocchi`)
+- ✅ On-brand `/not-found` page with display-size 404, pun, and three escape hatches
+- ✅ Open Graph + Twitter summary card metadata in root layout
+- 🟡 **OG image** — uses `profile.jpg` (300×300) as a fallback. A dedicated 1200×630 social card hasn't been designed.
+- ✅ `react-parallax-tilt` guarded by `prefers-reduced-motion`; tilt max angle dropped to ±8°, glare disabled
+- ✅ `react-responsive-masonry` replaced with native CSS columns; ~7KB JS removed
+- ✅ Home hero spacing restructured into identity / wayfinding groups
+- ✅ Social icons resized to a single `text-4xl` instead of `text-5xl` + `scale-75`; tap target now ~48px
 
-The site that ships at `claude/website-ux-analysis-cYN6O` is, end to end:
+### P2 — system-level upgrades
 
-- A static-export Next.js site with **fully MDX-driven content** (6 blog posts, 12 project case studies, 1 recipe), generating 27 prerendered pages
-- A **complete design system** in CSS variables: semantic colour + accent + radius + shadow + motion tokens, all theme-aware
-- A real brand identity: **Fraunces serif** with variable-axis polish for display sizes, **Geist** for UI/body, **basil-green accent** rooted in the Pesto name
-- **Dark mode** via `prefers-color-scheme`, verified across every route
-- **WCAG 2.4.7, 2.4.6, and 2.5.8 AA passes** for focus visibility, heading outline, and tap targets
-- **Native view transitions** for project navigation
-- **Build-time blur placeholders** on every image
-- A **filesystem-generated sitemap and robots.txt**
-- JSON-LD `Person` schema and per-route Open Graph metadata
-- `/now`, `/uses`, `/colophon`, `/recipes/pesto` — content pages that signal a personal site, not a templated portfolio
+- ✅ Dark mode shipped via semantic CSS variable tokens; activates on `prefers-color-scheme: dark` and via manual toggle button
+- ✅ Tailwind config exposes the new tokens as utilities
+- ✅ Hardcoded grays swept from Home, About, Blog, Projects, Footer, TiltAvatar, not-found
+- ✅ About and Blog moved to Server Components (removed unnecessary `'use client'`)
+- ✅ Home parallax extracted into `TiltAvatar` client island; Home page itself now Server Component
+- ✅ Projects page now Server Component (CSS columns replaced JS masonry)
+- ✅ `prefers-reduced-motion` global CSS rule + per-component handling for the tilt
+- ✅ Skip-to-content link as first focusable element on every page
+- ✅ JSON-LD `Person` schema in root layout
+- 🟡 **JSON-LD `BlogPosting` schema** — only `Person` ships sitewide. Per-post `BlogPosting` (headline, datePublished, author, keywords) isn't emitted.
+- ✅ Full design token system (radius, shadow, motion tokens alongside colour + font)
+- ✅ Unified card surface via shared className constants in `lib/styles.ts`
+- ⬜ **`<Container>` / `<Section>` / `<Stack>` layout primitives** — `PageShell` ships, but the three composable spacing primitives don't exist; pages still use ad-hoc div + className combos for inner spacing.
+- ✅ Per-project case study pages at `/projects/[slug]` (MDX-driven, with prev/next nav)
+- ✅ MDX-driven blog at `/blog/[slug]` (with reading time, tags, related-posts)
+- ✅ `sitemap.ts` / `robots.ts` (generates from filesystem at build)
 
-Every commit on the branch is authored by Sandeep Raju Prabhakar `<me@sandeepraju.in>`.
+### P3 — raise the bar
+
+- ✅ Pesto-brand palette (basil + cream + olive accent, warm paper background, dark-mode aware)
+- ✅ Swap Merriweather for Fraunces (variable axes `opsz` + `SOFT`)
+- ✅ Two-column hero rebuild on Home with display-size H1, role tag, intro, "Currently building" line, two CTAs, social row
+- ✅ Below-the-fold strips: Selected work + Recent writing + Get in touch
+- ✅ View Transitions API on project card → `/projects/[slug]` (unique `viewTransitionName` per project)
+- ✅ Content pages: `/now`, `/uses`, `/colophon`, `/recipes/pesto`
+- ✅ Image blur placeholders (build-time `sharp` generation)
+
+### Section 11 sub-items (raise-the-bar)
+
+- ✅ 11.1 brand built around the metaphor (basil palette + pesto recipe page)
+- ✅ 11.2 design system in semantic tokens
+- ✅ 11.3 project case studies
+- ✅ 11.4 blog as editorial — MDX, frontmatter, reading time, related posts
+- ⬜ **11.4 Tag filtering on `/blog`** — tags display as pills but don't filter the list.
+- ⬜ **11.4 Featured post at the top, larger** — every post has equal visual weight on the index.
+- ⬜ **11.4 Newsletter signup** (audit marked "optional but signals seriousness")
+- ✅ 11.5 home rebuilt with two-column hero + below-fold strips
+- ⬜ **11.6 Full 4-column footer** (Site / Writing / Find me / Currently). Current footer is simpler — top row of utility links + bottom credit line.
+- ✅ 11.7 dark mode shipped, with manual toggle on top of OS preference
+- ✅ 11.8 view-transitions on project navigation
+- ⬜ **11.8 Scroll-triggered reveals** (IntersectionObserver, 30px translate, stagger) — not done; only hover and view-transition motion ships.
+- ✅ 11.9 404 on-brand
+- ✅ 11.10 content artifacts (/now, /uses, /colophon, /recipes/pesto)
+
+### Open items rolling into the next pass
+
+These are the seven open items above, condensed for tracking:
+
+1. ⬜ JSON-LD `BlogPosting` schema per post
+2. ⬜ `<Container>` / `<Section>` / `<Stack>` layout primitives
+3. ⬜ Tag filtering on `/blog`
+4. ⬜ Featured post at the top of `/blog`
+5. ⬜ Newsletter signup
+6. ⬜ Full 4-column footer
+7. ⬜ Scroll-triggered reveals on project / post cards
+8. 🟡 Dedicated 1200×630 OG image
+
+---
+
+## Appendix E — Bonus fixes (caught after the original audit)
+
+Discovered during re-audits and visual passes; not part of the original 40-row roadmap. All closed.
+
+- ✅ Mobile horizontal-overflow on blog posts (long `<pre>` lines were pushing the whole layout past the viewport on 375px)
+- ✅ About figure right-side padding asymmetry (figure wasn't capped to image's natural width)
+- ✅ Mobile nav stacked vertically — replaced with compact horizontal row (icons hidden below md)
+- ✅ Blue ring on the avatar (Tailwind's slash-opacity modifier couldn't decompose a hex-valued CSS variable, so the default `--tw-ring-color` blue-500 took over)
+- ✅ Convention attribution lines on `/now` and `/uses` removed for cleaner content
+- ✅ Manual theme toggle (System / Light / Dark) on top of OS preference
+
+Plus the six findings from Appendix C (duplicate H1, purged `bg-accent-soft`, footer tap targets, unlinked Pesto Bot mention, title-template bypass, redundant Colophon footer link) — all closed.
 
 ---
 
