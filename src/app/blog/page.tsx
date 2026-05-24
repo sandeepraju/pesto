@@ -94,7 +94,7 @@ export default function Blog() {
             More writing
           </h2>
           {rest.map((post) => (
-            <article key={post.slug} className={`group mb-6 p-6 ${cardSurface}`}>
+            <article key={post.slug} className={`reveal group mb-6 p-6 ${cardSurface}`}>
               <Link
                 href={`/blog/${post.slug}`}
                 className="block"

@@ -135,3 +135,40 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+/*
+ * Scroll-triggered reveals.
+ *
+ * Uses native CSS scroll-driven animations (animation-timeline: view())
+ * so we don't need an IntersectionObserver client component. Elements
+ * marked .reveal rise 24px and fade in as they cross into the viewport,
+ * with the stagger emerging naturally from each element's scroll
+ * position.
+ *
+ * Browsers without scroll-driven-animation support (older Safari,
+ * Firefox < 134 at time of writing) skip the animation entirely;
+ * elements just appear in their final position. Graceful degradation.
+ *
+ * The prefers-reduced-motion guard above squashes animation-duration
+ * to 0.01ms, which the spec respects for view-driven animations too.
+ */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: reveal-rise linear both;
+      animation-timeline: view();
+      animation-range: entry 5% cover 25%;
+    }
+  }
+}
+
+@keyframes reveal-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

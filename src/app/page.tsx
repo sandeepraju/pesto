@@ -108,7 +108,7 @@ export default function Home() {
           </header>
           <ul className="grid gap-4 md:grid-cols-3">
             {featuredProjects.map((p) => (
-              <li key={p.slug}>
+              <li key={p.slug} className="reveal">
                 <Link
                   href={`/projects/${p.slug}`}
                   className={`group overflow-hidden ${cardSurface}`}
@@ -149,7 +149,7 @@ export default function Home() {
           </header>
           <ul className="grid gap-4 md:grid-cols-2">
             {recentPosts.map((post) => (
-              <li key={post.slug}>
+              <li key={post.slug} className="reveal">
                 <Link
                   href={`/blog/${post.slug}`}
                   className={`group p-5 ${cardSurface}`}
