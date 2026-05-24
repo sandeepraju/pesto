@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import PageShell from "../components/PageShell";
+import { Container, Section, Stack } from "../components/primitives";
 import config from "../../data/config.json";
 
 export const metadata: Metadata = {
@@ -76,7 +77,7 @@ const sections: Section[] = [
 export default function Uses() {
   return (
     <PageShell>
-      <article className="max-w-[60ch] mx-auto pb-16">
+      <Container as="article" size="prose" className="pb-16">
         <header className="mb-8">
           <h1 className="text-3xl md:text-5xl font-bold font-serif leading-tight mb-2">Uses</h1>
           <p className="text-muted-strong">
@@ -84,20 +85,22 @@ export default function Uses() {
           </p>
         </header>
 
-        {sections.map((section) => (
-          <section key={section.heading} className="mb-10">
-            <h2 className="text-xl font-bold font-serif mb-3">{section.heading}</h2>
-            <ul className="space-y-2">
-              {section.items.map((item) => (
-                <li key={item.name} className="leading-relaxed">
-                  <strong className="text-foreground font-semibold">{item.name}</strong>
-                  {item.note && <span className="text-muted-strong"> — {item.note}</span>}
-                </li>
-              ))}
-            </ul>
-          </section>
-        ))}
-      </article>
+        <Stack gap="lg">
+          {sections.map((section) => (
+            <Section key={section.heading} spacing="none">
+              <h2 className="text-xl font-bold font-serif mb-3">{section.heading}</h2>
+              <Stack as="ul" gap="sm">
+                {section.items.map((item) => (
+                  <li key={item.name} className="leading-relaxed">
+                    <strong className="text-foreground font-semibold">{item.name}</strong>
+                    {item.note && <span className="text-muted-strong"> — {item.note}</span>}
+                  </li>
+                ))}
+              </Stack>
+            </Section>
+          ))}
+        </Stack>
+      </Container>
     </PageShell>
   );
 }
