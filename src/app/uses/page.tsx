@@ -82,17 +82,6 @@ export default function Uses() {
           <p className="text-muted-strong">
             The hardware, software, and kitchen tools I actually reach for. No affiliate links, no sponsored picks — just what&apos;s on the desk, the counter, and the gym bag.
           </p>
-          <p className="text-xs text-muted mt-2">
-            (Inspired by{" "}
-            <a
-              href="https://uses.tech"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline underline-offset-4 decoration-dashed hover:decoration-solid"
-            >
-              uses.tech
-            </a>.)
-          </p>
         </header>
 
         {sections.map((section) => (

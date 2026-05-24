@@ -19,18 +19,6 @@ export default function Now() {
             What I&apos;m focused on right now. Updated periodically — last refresh{" "}
             <time>{updated}</time>.
           </p>
-          <p className="text-xs text-muted mt-2">
-            (This is a{" "}
-            <a
-              href="https://nownownow.com/about"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline underline-offset-4 decoration-dashed hover:decoration-solid"
-            >
-              /now
-            </a>{" "}
-            page, in the Derek Sivers tradition.)
-          </p>
         </header>
 
         <section className="mb-10">
