@@ -13,5 +13,11 @@
     "x": "https://x.com/gpestocchi",
     "medium": "https://medium.com/@gpestocchi",
     "email": "mailto:hello@gpestocchi.com"
+  },
+  "newsletter": {
+    "enabled": true,
+    "action": "https://buttondown.email/api/emails/embed-subscribe/gpestocchi",
+    "provider": "Buttondown",
+    "blurb": "Occasional posts on software, cooking, and what happens when you mix the two. One email per post, no spam, unsubscribe whenever."
   }
 }

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import PageShell from "../../components/PageShell";
+import NewsletterSignup from "../../components/NewsletterSignup";
 import config from "../../../data/config.json";
 import {
   getAllSlugs,
@@ -172,6 +173,10 @@ export default async function BlogPost({ params }: { params: Promise<Params> }) 
           </ul>
         </aside>
       )}
+
+      <div className="pb-12">
+        <NewsletterSignup variant="card" />
+      </div>
     </PageShell>
   );
 }

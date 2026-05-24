@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from 'next/link';
 import PageShell from "../components/PageShell";
+import NewsletterSignup from "../components/NewsletterSignup";
 import config from '../../data/config.json';
 import { getAllPosts, getAllTags, formatPostDate, slugifyTag, type PostMeta } from "../../lib/blog";
 import { cardSurface, tagPill } from "../../lib/styles";
@@ -116,6 +117,10 @@ export default function Blog() {
           ))}
         </div>
       )}
+
+      <div className="mt-12">
+        <NewsletterSignup variant="card" />
+      </div>
     </PageShell>
   );
 }
