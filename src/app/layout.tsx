@@ -2,6 +2,22 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Fraunces } from "next/font/google";
 import "./globals.css";
 import config from '../data/config.json';
+import ThemeToggle from "./components/ThemeToggle";
+
+/*
+ * Read the saved theme preference before first paint so the page renders
+ * in the right colours immediately — no flash of light when the user has
+ * chosen dark. Runs synchronously in <head>; the cost is one localStorage
+ * read.
+ */
+const themeBootstrap = `(function() {
+  try {
+    var t = localStorage.getItem('theme');
+    if (t === 'light' || t === 'dark') {
+      document.documentElement.setAttribute('data-theme', t);
+    }
+  } catch (e) {}
+})();`;
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -48,7 +64,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeBootstrap }} />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} antialiased`}
       >
@@ -77,6 +96,7 @@ export default function RootLayout({
           }}
         />
         {children}
+        <ThemeToggle />
       </body>
     </html>
   );

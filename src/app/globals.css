@@ -36,8 +36,9 @@
   --duration-slow: 400ms;
 }
 
+/* OS preference — only applies when the user hasn't picked manually. */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme='light']) {
     --background: #0d0e0c;     /* near-black with a faint warm green */
     --foreground: #ededeb;
     --muted: #9ca3af;
@@ -50,6 +51,21 @@
     --accent-strong: #b1cda8;
     --accent-soft: #2a3528;    /* deep basil wash */
   }
+}
+
+/* Manual override — beats the OS media query. */
+:root[data-theme='dark'] {
+  --background: #0d0e0c;
+  --foreground: #ededeb;
+  --muted: #9ca3af;
+  --muted-strong: #d1d5db;
+  --surface: #181a17;
+  --surface-muted: #20231f;
+  --border: #2c2f29;
+
+  --accent: #8ab07f;
+  --accent-strong: #b1cda8;
+  --accent-soft: #2a3528;
 }
 
 body {
