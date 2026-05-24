@@ -626,7 +626,7 @@ Legend: ✅ done · 🟡 partial · ⬜ open
 - ✅ Per-route metadata exports on About, Projects, Blog (sitewide title template `%s · Giovanni Pestocchi`)
 - ✅ On-brand `/not-found` page with display-size 404, pun, and three escape hatches
 - ✅ Open Graph + Twitter summary card metadata in root layout
-- 🟡 **OG image** — uses `profile.jpg` (300×300) as a fallback. A dedicated 1200×630 social card hasn't been designed.
+- ✅ Dedicated 1200×630 OG image — generated at build time from the site's tokens (basil stripe, big serif name, avatar with accent-soft ring). `scripts/generate-og-image.mjs` runs as part of `prebuild`; twitter card type bumped to `summary_large_image`.
 - ✅ `react-parallax-tilt` guarded by `prefers-reduced-motion`; tilt max angle dropped to ±8°, glare disabled
 - ✅ `react-responsive-masonry` replaced with native CSS columns; ~7KB JS removed
 - ✅ Home hero spacing restructured into identity / wayfinding groups
@@ -643,10 +643,10 @@ Legend: ✅ done · 🟡 partial · ⬜ open
 - ✅ `prefers-reduced-motion` global CSS rule + per-component handling for the tilt
 - ✅ Skip-to-content link as first focusable element on every page
 - ✅ JSON-LD `Person` schema in root layout
-- 🟡 **JSON-LD `BlogPosting` schema** — only `Person` ships sitewide. Per-post `BlogPosting` (headline, datePublished, author, keywords) isn't emitted.
+- ✅ JSON-LD `BlogPosting` schema on every blog post (headline, datePublished, dateModified, keywords, author, publisher, mainEntityOfPage, image, wordCount)
 - ✅ Full design token system (radius, shadow, motion tokens alongside colour + font)
 - ✅ Unified card surface via shared className constants in `lib/styles.ts`
-- ⬜ **`<Container>` / `<Section>` / `<Stack>` layout primitives** — `PageShell` ships, but the three composable spacing primitives don't exist; pages still use ad-hoc div + className combos for inner spacing.
+- ✅ `<Container>` / `<Section>` / `<Stack>` layout primitives in `src/app/components/primitives.tsx`; adopted by `/now` and `/uses` as demonstration
 - ✅ Per-project case study pages at `/projects/[slug]` (MDX-driven, with prev/next nav)
 - ✅ MDX-driven blog at `/blog/[slug]` (with reading time, tags, related-posts)
 - ✅ `sitemap.ts` / `robots.ts` (generates from filesystem at build)
@@ -667,29 +667,29 @@ Legend: ✅ done · 🟡 partial · ⬜ open
 - ✅ 11.2 design system in semantic tokens
 - ✅ 11.3 project case studies
 - ✅ 11.4 blog as editorial — MDX, frontmatter, reading time, related posts
-- ⬜ **11.4 Tag filtering on `/blog`** — tags display as pills but don't filter the list.
-- ⬜ **11.4 Featured post at the top, larger** — every post has equal visual weight on the index.
-- ⬜ **11.4 Newsletter signup** (audit marked "optional but signals seriousness")
+- ✅ 11.4 Tag filtering on `/blog` — per-tag static routes at `/blog/tags/[tag]`, with a tag-chip row on the index linking to each
+- ✅ 11.4 Featured post at the top of `/blog`, rendered larger with a 'Latest' eyebrow, big serif headline, and dedicated CTA
+- ✅ 11.4 Newsletter signup — static HTML form posting to a configured provider (Buttondown / ConvertKit / etc.); rendered on `/blog` and at the bottom of each post
 - ✅ 11.5 home rebuilt with two-column hero + below-fold strips
-- ⬜ **11.6 Full 4-column footer** (Site / Writing / Find me / Currently). Current footer is simpler — top row of utility links + bottom credit line.
+- ✅ 11.6 Full 2+4-column footer — identity block + Site / Writing / Find me / Currently columns + copyright + Source-on-GitHub strip
 - ✅ 11.7 dark mode shipped, with manual toggle on top of OS preference
 - ✅ 11.8 view-transitions on project navigation
-- ⬜ **11.8 Scroll-triggered reveals** (IntersectionObserver, 30px translate, stagger) — not done; only hover and view-transition motion ships.
+- ✅ 11.8 Scroll-triggered reveals — pure-CSS `animation-timeline: view()`, guarded by `@supports` and `prefers-reduced-motion`; applied to project / blog / home strips
 - ✅ 11.9 404 on-brand
 - ✅ 11.10 content artifacts (/now, /uses, /colophon, /recipes/pesto)
 
-### Open items rolling into the next pass
+### Closed: the full roadmap
 
-These are the seven open items above, condensed for tracking:
+Every item from the original audit (Sections 11 and 12) plus the re-audit appendices (C, E) is now closed. The branch ships:
 
-1. ⬜ JSON-LD `BlogPosting` schema per post
-2. ⬜ `<Container>` / `<Section>` / `<Stack>` layout primitives
-3. ⬜ Tag filtering on `/blog`
-4. ⬜ Featured post at the top of `/blog`
-5. ⬜ Newsletter signup
-6. ⬜ Full 4-column footer
-7. ⬜ Scroll-triggered reveals on project / post cards
-8. 🟡 Dedicated 1200×630 OG image
+1. ✅ JSON-LD `BlogPosting` schema per post (`c5fc872`)
+2. ✅ `<Container>` / `<Section>` / `<Stack>` layout primitives (`dc21f8c`)
+3. ✅ Tag filtering on `/blog` via per-tag static routes (`b7f91de`)
+4. ✅ Featured post at the top of `/blog` (`e9e21e9`)
+5. ✅ Full 4-column footer (`e17fcda`)
+6. ✅ Scroll-triggered reveals (`aea548e`)
+7. ✅ Newsletter signup (`eb28c57`)
+8. ✅ Dedicated 1200×630 OG image, build-time generated (`3ad8c12`)
 
 ---
 
