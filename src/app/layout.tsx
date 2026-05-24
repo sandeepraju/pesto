@@ -48,13 +48,13 @@ export const metadata: Metadata = {
     title: config.meta.title,
     description: config.meta.description,
     siteName: config.name,
-    images: [{ url: "/img/profile.jpg", width: 300, height: 300, alt: config.name }],
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: `${config.name} — personal site` }],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: config.meta.title,
     description: config.meta.description,
-    images: ["/img/profile.jpg"],
+    images: ["/og.png"],
   },
 };
 

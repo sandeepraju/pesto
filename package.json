@@ -4,11 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/generate-blur-placeholders.mjs",
+    "prebuild": "node scripts/generate-blur-placeholders.mjs && node scripts/generate-og-image.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint src/",
     "blur": "node scripts/generate-blur-placeholders.mjs",
+    "og": "node scripts/generate-og-image.mjs",
     "test": "echo \"No tests specified\""
   },
   "dependencies": {

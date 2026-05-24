@@ -5,7 +5,8 @@
   "fork": "https://github.com/sandeepraju/pesto",
   "meta": {
     "title": "Giovanni Pestocchi — Software Developer & Culinary Artist",
-    "description": "Personal site of Giovanni Pestocchi: software developer, home cook, pesto enthusiast. Projects, writing, and the occasional recipe."
+    "description": "Personal site of Giovanni Pestocchi: software developer, home cook, pesto enthusiast. Projects, writing, and the occasional recipe.",
+    "tagline": "Projects, writing, recipes."
   },
   "social": {
     "linkedin": "https://www.linkedin.com/in/giovanni-pestocchi",
