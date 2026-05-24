@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from 'next/link';
 import PageShell from "../components/PageShell";
 import config from '../../data/config.json';
-import { getAllPosts, formatPostDate } from "../../lib/blog";
+import { getAllPosts, getAllTags, formatPostDate, slugifyTag } from "../../lib/blog";
 import { cardSurface, tagPill } from "../../lib/styles";
 
 export const metadata: Metadata = {
@@ -12,12 +12,30 @@ export const metadata: Metadata = {
 
 export default function Blog() {
   const posts = getAllPosts();
+  const tags = getAllTags();
   return (
     <PageShell>
         <h1 className="text-3xl md:text-4xl font-bold font-serif text-center mx-auto pb-2">Blog</h1>
-        <p className="text-center text-muted mx-auto max-w-[40em] pb-12">
+        <p className="text-center text-muted mx-auto max-w-[40em] pb-6">
           Notes on software, cooking, and what happens when you mix the two.
         </p>
+        {tags.length > 0 && (
+          <nav aria-label="Filter by tag" className="max-w-[50em] mx-auto pb-10">
+            <ul className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-sm">
+              <li className="text-muted uppercase tracking-[0.15em] text-xs font-medium">Browse by tag:</li>
+              {tags.map(({ tag, count }) => (
+                <li key={tag}>
+                  <Link
+                    href={`/blog/tags/${slugifyTag(tag)}`}
+                    className={`${tagPill} hover:underline underline-offset-4 decoration-dashed`}
+                  >
+                    {tag} <span className="text-accent-strong/70">({count})</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        )}
         <div className="max-w-[50em] mx-auto">
           {posts.map((post) => (
             <article key={post.slug} className={`group mb-8 p-6 ${cardSurface}`}>

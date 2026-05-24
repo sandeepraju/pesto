@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import config from "../data/config.json";
-import { getAllPosts } from "../lib/blog";
+import { getAllPosts, getAllTags, slugifyTag } from "../lib/blog";
 import { getAllProjects } from "../lib/projects";
 
 export const dynamic = "force-static";
@@ -27,6 +27,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
+  const tagRoutes: MetadataRoute.Sitemap = getAllTags().map(({ tag }) => ({
+    url: `${base}/blog/tags/${slugifyTag(tag)}`,
+    lastModified: now,
+    changeFrequency: "weekly",
+    priority: 0.5,
+  }));
+
   const projectRoutes: MetadataRoute.Sitemap = getAllProjects().map((project) => ({
     url: `${base}/projects/${project.slug}`,
     lastModified: now,
@@ -34,5 +41,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticRoutes, ...blogRoutes, ...projectRoutes];
+  return [...staticRoutes, ...blogRoutes, ...tagRoutes, ...projectRoutes];
 }
