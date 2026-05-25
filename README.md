@@ -6,6 +6,16 @@
   <p><em><strong>Pesto</strong> is a static, MDX-driven personal site template — portfolio, blog, recipes, the lot — built with <a href="https://nextjs.org/">Next.js</a>, <a href="https://tailwindcss.com/">Tailwind CSS</a>, and <a href="https://fonts.google.com/specimen/Fraunces">Fraunces</a>.</em></p>
 </div>
 
+<p align="center">
+  <a href="https://github.com/sandeepraju/pesto/actions/workflows/node.js.yml"><img alt="CI status" src="https://img.shields.io/github/actions/workflow/status/sandeepraju/pesto/node.js.yml?branch=mainline&style=flat-square&label=CI&color=3e5c3a" /></a>
+  <a href="https://github.com/sandeepraju/pesto/actions/workflows/nextjs.yml"><img alt="Deploy status" src="https://img.shields.io/github/actions/workflow/status/sandeepraju/pesto/nextjs.yml?branch=mainline&style=flat-square&label=deploy&color=3e5c3a" /></a>
+  <a href="LICENSE"><img alt="MIT License" src="https://img.shields.io/github/license/sandeepraju/pesto?style=flat-square&color=3e5c3a" /></a>
+  <img alt="Next.js 16" src="https://img.shields.io/badge/Next.js-16-000?style=flat-square&logo=nextdotjs" />
+  <img alt="React 19" src="https://img.shields.io/badge/React-19-149eca?style=flat-square&logo=react" />
+  <img alt="Tailwind CSS 3" src="https://img.shields.io/badge/Tailwind_CSS-3-38bdf8?style=flat-square&logo=tailwindcss&logoColor=white" />
+  <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-3178c6?style=flat-square&logo=typescript&logoColor=white" />
+</p>
+
 ## Why Pesto
 
 Most personal-site templates ship as visual scaffolding and leave the writing and case-study layer as an exercise for the reader. Pesto ships with the editorial wiring already in place:
