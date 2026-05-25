@@ -10,6 +10,7 @@ import {
   getPostBySlug,
   getRelatedPosts,
   formatPostDate,
+  slugifyTag,
 } from "../../../lib/blog";
 import { cardSurface, tagPill } from "../../../lib/styles";
 
@@ -131,8 +132,14 @@ export default async function BlogPost({ params }: { params: Promise<Params> }) 
           {post.tags.length > 0 && (
             <ul className="flex flex-wrap gap-1.5 mt-5" aria-label="Tags">
               {post.tags.map((tag) => (
-                <li key={tag} className={tagPill}>
-                  {tag}
+                <li key={tag}>
+                  <Link
+                    href={`/blog/tags/${slugifyTag(tag)}`}
+                    className={`${tagPill} hover:underline underline-offset-4 decoration-dashed`}
+                    aria-label={`See posts tagged ${tag}`}
+                  >
+                    {tag}
+                  </Link>
                 </li>
               ))}
             </ul>

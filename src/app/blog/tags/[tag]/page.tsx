@@ -27,6 +27,9 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   };
 }
 
+const stretchedLinkClass =
+  "static after:absolute after:inset-0 after:content-[''] focus:outline-none";
+
 export default async function TagPage({ params }: { params: Promise<Params> }) {
   const { tag: slug } = await params;
   const tag = unslugifyTag(slug);
@@ -54,38 +57,42 @@ export default async function TagPage({ params }: { params: Promise<Params> }) {
 
       <div className="max-w-[50em] mx-auto">
         {posts.map((post) => (
-          <article key={post.slug} className={`group mb-8 p-6 ${cardSurface}`}>
-            <Link
-              href={`/blog/${post.slug}`}
-              className="block"
-              aria-label={`${post.title} — ${post.description}`}
-            >
-              <div className="flex flex-col space-y-2">
-                <h2 className="text-xl md:text-2xl font-bold font-serif text-foreground group-hover:text-muted-strong transition-colors duration-200">
+          <article key={post.slug} className={`group relative mb-8 p-6 ${cardSurface}`}>
+            <div className="flex flex-col space-y-2">
+              <h2 className="text-xl md:text-2xl font-bold font-serif text-foreground group-hover:text-muted-strong transition-colors duration-200">
+                <Link href={`/blog/${post.slug}`} className={stretchedLinkClass}>
                   {post.title}
-                </h2>
-                <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted">
-                  <time dateTime={new Date(post.date).toISOString()}>{formatPostDate(post.date)}</time>
-                  <span aria-hidden="true">·</span>
-                  <span>{post.readingMinutes} min read</span>
-                  {post.tags.length > 0 && (
-                    <>
-                      <span aria-hidden="true">·</span>
-                      <ul className="flex flex-wrap gap-1.5">
-                        {post.tags.map((t) => (
-                          <li key={t} className={tagPill}>{t}</li>
-                        ))}
-                      </ul>
-                    </>
-                  )}
-                </div>
-                <p className="text-muted-strong mt-2">{post.description}</p>
-                <div className="inline-flex items-center gap-1 text-foreground text-sm font-semibold mt-2 transition-transform duration-200 group-hover:translate-x-1">
-                  Read more
-                  <span aria-hidden="true">→</span>
-                </div>
+                </Link>
+              </h2>
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted">
+                <time dateTime={new Date(post.date).toISOString()}>{formatPostDate(post.date)}</time>
+                <span aria-hidden="true">·</span>
+                <span>{post.readingMinutes} min read</span>
+                {post.tags.length > 0 && (
+                  <>
+                    <span aria-hidden="true">·</span>
+                    <ul className="flex flex-wrap gap-1.5 relative z-20">
+                      {post.tags.map((t) => (
+                        <li key={t}>
+                          <Link
+                            href={`/blog/tags/${slugifyTag(t)}`}
+                            className={`${tagPill} hover:underline underline-offset-4 decoration-dashed`}
+                            aria-label={`See posts tagged ${t}`}
+                          >
+                            {t}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                )}
               </div>
-            </Link>
+              <p className="text-muted-strong mt-2">{post.description}</p>
+              <div className="inline-flex items-center gap-1 text-foreground text-sm font-semibold mt-2 transition-transform duration-200 group-hover:translate-x-1">
+                Read more
+                <span aria-hidden="true">→</span>
+              </div>
+            </div>
           </article>
         ))}
       </div>
