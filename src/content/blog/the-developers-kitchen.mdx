@@ -1,0 +1,68 @@
+---
+title: "The developer's kitchen: automating my meal-prep workflow"
+date: 2026-02-20
+description: "Building a simple app to streamline weekly meal planning without sacrificing a balanced life."
+tags: [cooking, tools, process]
+---
+
+I built a meal-prep app for myself last spring. I almost didn't.
+
+The argument against was the classic one: I could have used a spreadsheet. I almost did use a spreadsheet. I had a spreadsheet, working, in 2023. The argument *for* was less rational: I wanted to.
+
+A year later, the spreadsheet is dead. The app is the thing I open before grocery runs, before workouts, before deciding what to thaw on Sunday afternoon. It's the most-used piece of personal software I've ever built. Here's what I learned writing it.
+
+## Rule one: only automate what you actually do
+
+The first version was overbuilt. I had calendar integration, a barcode scanner, a macros calculator, a grocery API, a recipe importer, an export-to-PDF feature, and not once did I open the app on a Wednesday and use any of it.
+
+The second version was just: *a list of meals for the week, with what's in my fridge and what I need to buy.* That's it. I open it more in a week than I opened the first version in a month.
+
+The lesson isn't "build smaller." The lesson is "build the thing you actually do." Most personal tools fail because their authors built the thing they wished they did.
+
+## Rule two: persistence beats features
+
+People underestimate how good plain text files are for personal data. My current app is a Next.js page that reads a single JSON file out of an iCloud-synced folder. The JSON file is hand-editable. The file is the source of truth. The app is a viewer.
+
+```
+{
+  "week": "2026-W08",
+  "meals": [
+    { "day": "Mon", "lunch": "Pesto chicken wrap",         "dinner": "Pasta carbonara" },
+    { "day": "Tue", "lunch": "Leftover carbonara",         "dinner": "Stir-fry, ginger-garlic" },
+    { "day": "Wed", "lunch": "Lentil soup",                "dinner": "Pesto pizza (Wednesday tradition)" },
+    ...
+  ],
+  "shopping": ["basil", "pine nuts", "chicken thighs", "lemons"]
+}
+```
+
+Six months from now, when I redesign the app for the third time, the JSON file will still be there. It will outlive every database I could have chosen.
+
+## Rule three: the constraint is the feature
+
+When you build software for one user (yourself), every decision is downstream of the constraints you actually have. My constraint is: I cook five dinners a week, eat leftovers the next day for lunch, and shop once a week. That's it. The app surfaces only that.
+
+I do not need a recipe library. I have cookbooks for that.
+I do not need calorie tracking. I am not in that phase of my life.
+I do not need social sharing. Nobody wants this.
+
+The simpler the constraint, the more useful the tool.
+
+## Rule four: ship the ugly version
+
+The current app has no animations, no skeleton loaders, no error states, no settings page, no auth, no analytics. It is six text inputs and a list. It works. It has worked unchanged for nine months, which is the longest any of my side projects have survived without rewrites.
+
+The Pareto principle is real. The 80% you can ship in a weekend is usually the 100% you actually need.
+
+## What I'd build next, if I needed to
+
+Two things, if I forced myself:
+
+- A "what's about to expire" view that surfaces ingredients the JSON marked as `bought` more than five days ago. Reduces waste.
+- A "rotate the same meals" detector that flags when the week looks suspiciously like last week. Adds variety.
+
+Both of those are still in plain text. Both could be a single grep. I might just write the grep.
+
+## The recipe section
+
+There is no recipe section. The point of the tool is to free up the brain space *not* to think about recipes. The recipes live in my head, on Post-it notes, and in three cookbooks I trust. The tool just tells me which one is happening Tuesday.

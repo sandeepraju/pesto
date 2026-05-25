@@ -1,0 +1,38 @@
+---
+title: "Pesto Bot"
+description: "An AI kitchen assistant for pesto lovers. Tell it what's in your pantry — classic basil and pine nuts, or kale and almonds — and it suggests personalised recipes plus pairings for pasta, pizza, and salads."
+image: /img/projects/pesto-bot.jpeg
+portrait: true
+year: 2026
+role: "Solo build · 6 weeks"
+tech: [Next.js, TypeScript, OpenAI API, Postgres, Tailwind]
+url: https://github.com/gpestocchi/pesto-bot
+order: 1
+---
+
+## What it is
+
+A focused, single-purpose AI assistant for one thing: helping people make pesto with the ingredients they actually have. No 12-step onboarding, no "create an account" wall, no chat history sidebar.
+
+## The problem
+
+Most cooking apps make you scroll past five recipe options before they tell you what to do. I wanted an assistant that:
+
+- Took **what I have** as input.
+- Returned **one recipe**, not five.
+- Returned **a paragraph**, not a 1200-word SEO essay.
+
+## What I built
+
+A single text box, an LLM prompt I rewrote about thirty times, and a structured response renderer that surfaces:
+
+- A name for the variant ("Kale-Almond Pesto with Lemon")
+- The ratios in a copyable block
+- Three pairing suggestions
+- A one-line "why this works"
+
+That's it. No images, no nutrition tracking, no shopping list.
+
+## What I learned
+
+The hardest part wasn't the LLM call — it was *deciding what to leave out*. Every iteration of the spec ended with me cutting features. The final cut is the one where my partner used it for the first time without me explaining anything.

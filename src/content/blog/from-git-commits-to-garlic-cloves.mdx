@@ -1,0 +1,63 @@
+---
+title: "From Git commits to garlic cloves: a developer's journey into culinary code"
+date: 2026-03-15
+description: "How my software-development principles helped me perfect my signature pesto recipe, and what cooking taught me about clean code."
+tags: [cooking, process, essay]
+---
+
+I spent the first hour of last Sunday writing a pesto recipe like a function signature.
+
+```
+makePesto({
+  basil:    "2 cups, packed",
+  garlic:   "1 clove, mostly there for warmth",
+  pine:     "1/3 cup, toasted",
+  parm:     "1/2 cup, grated, fresh",
+  oil:      "1/2 cup, the good stuff",
+  salt:     "to taste, to taste, to taste",
+})
+```
+
+That's the signature. The implementation is fifteen seconds in a blender and a sigh of relief.
+
+## Code reviews and recipe reviews
+
+The first time someone watched me cook — I mean really watched, not just hung around the kitchen with a glass of wine — they said the same thing my best code reviewers say:
+
+> *You're doing too much.*
+
+I had three pots going. I was adjusting seasoning in real time. I was reaching for the lemon zester preemptively. I was, in short, refactoring while writing.
+
+The fix in cooking is the same as the fix in code: do one thing, finish it, taste it, then decide if the next thing is needed. Most kitchens, like most diffs, get worse the more "improvements" you stack on top.
+
+## The right level of abstraction
+
+A pesto recipe is a great teaching tool because it's almost always the wrong level of abstraction.
+
+- "Pesto" is too vague. Genovese? Sicilian? Kale? Pistachio?
+- "Pesto Genovese, 4 servings, basil from the Liguria region, 23 cl olive oil from the same hills" is too specific. You can't make it.
+- "Two cups of basil, a small clove of garlic, a third of a cup of pine nuts, half a cup of parmesan, half a cup of decent olive oil, salt" is exactly right. Specific enough to act on. Loose enough to forgive.
+
+That last form is how I write function signatures too. Specific in the contract, forgiving in the implementation.
+
+## What the kitchen taught the editor
+
+A few things have travelled the other direction:
+
+**Mise en place.** Get everything ready before you start. In code: read the file first, line up the imports, write the type signatures, *then* start writing the body.
+
+**Taste as you go.** Don't wait until the end to discover the dish is over-salted. Don't wait until the PR is up to discover the function signature is wrong.
+
+**The pan is hotter than you think.** Don't refactor while the test suite is timing out. Don't add a feature while the build is broken. Step back, take the pan off the heat, then think.
+
+**The dish is done when you taste no further improvements.** Not when you can think of no further changes. Not when the inspiration runs out. When the *taste* stops getting better. Ship the diff. Eat the pasta.
+
+## A pesto worth keeping
+
+Here's the recipe, finally, with no metaphors:
+
+> **Pesto Genovese** *(my version)*
+>
+> Toast a third of a cup of pine nuts in a dry pan, medium heat, until they smell like pine nuts. About four minutes. Let them cool. Throw two packed cups of fresh basil into a blender with one small clove of garlic, the cooled pine nuts, half a cup of grated parmesan, a generous pinch of salt, and half a cup of good olive oil. Pulse — don't run it continuously, you'll cook the basil with the friction heat. Scrape down the sides. Pulse again. Taste. Salt. Maybe more oil. Taste again. Done.
+
+Make it on a Tuesday. Eat it on pasta. The leftovers go in eggs.

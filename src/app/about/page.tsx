@@ -1,49 +1,89 @@
-// Render everything client side as this is a static-site.
-'use client'
-
+import type { Metadata } from "next";
 import Image from 'next/image';
-import Footer from "../components/Footer";
-import Header from "../components/Header";
+import Link from 'next/link';
+import PageShell from "../components/PageShell";
 import config from '../../data/config.json';
+import { getBlurDataURL } from "../../lib/blur";
+
+export const metadata: Metadata = {
+  title: "About",
+  description: `About ${config.name}: software developer, culinary artist, lifelong pesto enthusiast.`,
+};
 
 export default function About() {
   return (
-    <div className="grid grid-rows-[auto_1fr_auto] min-h-screen mx-auto gap-3 md:max-w-screen-lg">
-      <Header name={config.name} />
-      <main className="p-2 w-full max-w-full text-center justify-center">
-        <h1 className="text-xl md:text-3xl font-bold text-center justify-center mx-auto pb-5">About</h1>
-        <div className="md:max-w-[50%] inline-block p-4 bg-white rounded-lg shadow-lg transform transition-transform duration-500 hover:scale-105 mb-10">
-          <Image
-            src="/img/giovanni-pasta.jpeg"
-            alt="Doing what I do best! 🍝"
-            width={600}
-            height={400}
-            priority
-          />
-          <p className="text-center text-gray-600 mt-2 font-medium">Doing what I do best! 🍝</p>
-        </div>
-        <div className="md: max-w-[70%] text-center justify-center mx-auto">
-          <p className="mb-5">
-            Hi there! My name is Giovanni Pestocchi, and I like to think of myself as a jack of two trades: software development and culinary adventures. By day, I&apos;m deep in code, solving problems, and creating digital magic. But once the workday ends, I swap my keyboard for a cutting board and dive headfirst into the culinary world. My kitchen is where I let my creativity flow, and trust me, it&apos;s every bit as satisfying as debugging a stubborn piece of code—minus the occasional onion tears!
+    <PageShell>
+      <div className="max-w-[65ch] mx-auto">
+        <h1 className="text-3xl md:text-4xl font-bold font-serif pb-2 text-center">About</h1>
+        <p className="text-center text-muted mb-10">
+          Software developer · Culinary artist · Brooklyn, NY
+        </p>
+
+        <figure className="mb-12 mx-auto max-w-[600px]">
+          <div className="p-4 bg-surface border border-border rounded-lg shadow-lg transition-transform duration-200 hover:-translate-y-1">
+            <Image
+              src="/img/giovanni-pasta.jpeg"
+              alt=""
+              width={600}
+              height={400}
+              priority
+              sizes="(max-width: 640px) 100vw, 600px"
+              className="rounded w-full h-auto"
+              placeholder={getBlurDataURL("/img/giovanni-pasta.jpeg") ? "blur" : "empty"}
+              blurDataURL={getBlurDataURL("/img/giovanni-pasta.jpeg")}
+            />
+          </div>
+          <figcaption className="text-center text-muted mt-3 text-sm font-medium">Doing what I do best 🍝</figcaption>
+        </figure>
+
+        <section className="mb-10">
+          <h2 className="text-xl font-bold mb-3">The short version</h2>
+          <p className="mb-4">
+            I&apos;m a software developer who treats the kitchen like a second IDE. By day I&apos;m deep in code; by evening I&apos;m chopping basil. Both come down to the same thing — taking simple ingredients and turning them into something more than the sum of their parts.
           </p>
-          <p className="mb-5">
-            Pesto holds a special place in my heart. If there&apos;s one thing you&apos;ll always find in my fridge, it&apos;s a jar of freshly made pesto. Basil, garlic, olive oil, pine nuts—it&apos;s like a symphony of flavors that can elevate anything. I&apos;ve tossed it with pasta, spread it on pizza, and even experimented with it in omelets. (Pro tip: pesto in your scrambled eggs is a game-changer!) There&apos;s something incredibly satisfying about taking simple ingredients and turning them into a dish that&apos;s more than the sum of its parts.
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-xl font-bold mb-3">What I do</h2>
+          <p className="mb-4">
+            Most of my work sits between web infrastructure and the products people actually use — APIs, design systems, the connective tissue. I care about software that reads well, deploys cleanly, and doesn&apos;t embarrass itself on a slow connection.
           </p>
-          <p className="mb-5">
-            When I&apos;m not busy writing code or perfecting my pesto recipes, you&apos;ll probably find me curled up on the couch, binge-watching movies or TV shows. I have a deep appreciation for storytelling, whether it&apos;s a classic film noir or the latest action-packed blockbuster. My tastes are all over the place—quirky indie films, gripping thrillers, heartfelt dramas—you name it. And yes, I&apos;ve been known to stay up way too late finishing &quot;just one more episode.&quot;
+          <p className="mb-4">
+            Lately I&apos;ve been building <em>Pesto Bot</em>, an AI kitchen assistant for people who, like me, can&apos;t stop putting basil in things. See the{" "}
+            <Link href="/projects" className="underline underline-offset-4 decoration-dashed hover:decoration-solid">Projects</Link> page for the rest.
           </p>
-          <p className="mb-5">
-            I&apos;m also a firm believer in balance, which is why I make it a point to stay active. The gym is my second home, and there&apos;s no better feeling than crushing a workout after a long day. Whether it&apos;s lifting weights, going for a run, or trying out a new fitness class, staying fit is my way of keeping both my body and mind sharp. Plus, let&apos;s be real—it&apos;s nice to earn those extra calories for my next culinary experiment!
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-xl font-bold mb-3">What I cook</h2>
+          <p className="mb-4">
+            Pesto, obviously. There&apos;s always a jar in my fridge. Basil, garlic, olive oil, pine nuts, parmesan — it&apos;s a five-ingredient symphony, and it goes on more things than people think. (Pro tip: scrambled eggs.)
           </p>
-          <p className="mb-5">
-            Life, to me, is all about finding joy in the little things and chasing passions with unrelenting enthusiasm. Whether I&apos;m perfecting a new recipe, cracking a tricky coding challenge, or simply enjoying a quiet moment with a good movie, I&apos;m all about savoring the journey. Oh, and if you ever need a tech-savvy friend who can also whip up a mean pesto pasta, you know who to call.
+          <p className="mb-4">
+            Beyond pesto: a lot of pasta from scratch, sourdough on weekends, and a slowly improving relationship with pizza dough hydration.
           </p>
-          <p className="mb-5">
-            So, that&apos;s me in a nutshell: a software developer with a flair for food, a movie buff with a fitness streak, and someone who believes that life&apos;s best moments often come from blending the unexpected. Let&apos;s connect—over code, over cuisine, or maybe even both!
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-xl font-bold mb-3">What else</h2>
+          <p className="mb-4">
+            I lift four mornings a week — it keeps me honest and earns the carbs. The other thing I lose evenings to is film: noir, indie, action-blockbuster, doesn&apos;t matter, if it&apos;s well-shot I&apos;m in. Frequent culprits behind &quot;just one more episode.&quot;
           </p>
-        </div>
-      </main>
-      <Footer />
-    </div>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-bold mb-3">Say hello</h2>
+          <p className="mb-4">
+            If you want to talk about code, cuisine, or both —{" "}
+            <a
+              href={config.social.email}
+              className="text-accent-strong underline underline-offset-4 decoration-dashed hover:decoration-solid font-medium"
+            >
+              hello@gpestocchi.com
+            </a>.
+          </p>
+        </section>
+      </div>
+    </PageShell>
   );
 }

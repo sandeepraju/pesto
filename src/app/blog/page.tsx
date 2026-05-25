@@ -1,82 +1,123 @@
-// Render everything client side as this is a static-site.
-'use client'
-
+import type { Metadata } from "next";
 import Link from 'next/link';
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import PageShell from "../components/PageShell";
+import NewsletterSignup from "../components/NewsletterSignup";
 import config from '../../data/config.json';
+import { getAllPosts, formatPostDate, slugifyTag, type PostMeta } from "../../lib/blog";
+import { cardSurface, tagPill } from "../../lib/styles";
 
-type BlogPost = {
-  title: string;
-  date: string;
-  description: string;
-  url: string;
+export const metadata: Metadata = {
+  title: "Blog",
+  description: `Writing by ${config.name} on software development, cooking, fitness, and the spaces in between.`,
 };
 
-const blogPosts: BlogPost[] = [
-  {
-    title: "From Git Commits to Garlic Cloves: A Developer's Journey into Culinary Code",
-    date: "March 15, 2024",
-    description: "How my software development principles helped me perfect my signature pesto recipe, and what cooking taught me about clean code.",
-    url: "https://example.com"
-  },
-  {
-    title: "The Perfect Pesto Algorithm: Optimizing Ingredient Ratios",
-    date: "March 10, 2024",
-    description: "A deep dive into the mathematics of pesto making, using data analysis to find the golden ratio of basil to pine nuts.",
-    url: "https://example.com"
-  },
-  {
-    title: "REST APIs and Rest Days: Balancing Tech and Fitness",
-    date: "March 5, 2024",
-    description: "How maintaining a consistent workout routine improved my problem-solving skills and made me a better developer.",
-    url: "https://example.com"
-  },
-  {
-    title: "Movie Night Microservices: Breaking Down Film Analysis Like Code",
-    date: "February 28, 2024",
-    description: "Applying software architecture principles to understand complex movie plots, from inception to implementation.",
-    url: "https://example.com"
-  },
-  {
-    title: "The Developer's Kitchen: Automating My Meal Prep Workflow",
-    date: "February 20, 2024",
-    description: "Building a simple app to streamline my weekly meal planning while maintaining a healthy work-life balance.",
-    url: "https://example.com"
-  }
-];
+/**
+ * Post-meta row: date · reading time · clickable tag chips.
+ *
+ * The chips are real links to /blog/tags/<slug>; they sit on a higher
+ * z-index than the stretched card link, so clicking a chip navigates to
+ * the tag page rather than the post.
+ */
+function PostMetaRow({ post }: { post: PostMeta }) {
+  return (
+    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted">
+      <time dateTime={new Date(post.date).toISOString()}>{formatPostDate(post.date)}</time>
+      <span aria-hidden="true">·</span>
+      <span>{post.readingMinutes} min read</span>
+      {post.tags.length > 0 && (
+        <>
+          <span aria-hidden="true">·</span>
+          <ul className="flex flex-wrap gap-1.5 relative z-20">
+            {post.tags.map((tag) => (
+              <li key={tag}>
+                <Link
+                  href={`/blog/tags/${slugifyTag(tag)}`}
+                  className={`${tagPill} hover:underline underline-offset-4 decoration-dashed`}
+                  aria-label={`See posts tagged ${tag}`}
+                >
+                  {tag}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
+    </div>
+  );
+}
+
+/**
+ * Card with a stretched ::after link: the whole surface is clickable
+ * to the post, but child elements with z-index > 0 (the tag chips)
+ * intercept their own clicks. Standard 'card with internal links'
+ * pattern that keeps valid HTML (no nested <a>).
+ */
+const stretchedLinkClass =
+  "static after:absolute after:inset-0 after:content-[''] focus:outline-none";
 
 export default function Blog() {
+  const posts = getAllPosts();
+  const [featured, ...rest] = posts;
+
   return (
-    <div className="grid grid-rows-[auto_1fr_auto] min-h-screen mx-auto gap-3 md:max-w-screen-lg">
-      <Header name={config.name} />
-      <main className="p-2 w-full max-w-full">
-        <h1 className="text-xl md:text-3xl font-bold text-center justify-center mx-auto pb-5">Blog</h1>
-        <p className="text-center mx-auto max-w-[40em] pb-16">
-          Welcome to my digital garden where I share thoughts on software development, culinary adventures,
-          fitness journey, and movie analyses. Here, you&apos;ll find the intersection of my passions,
-          from coding solutions to cooking innovations.
-        </p>
-        <div className="max-w-[50em] mx-auto">
-          {blogPosts.map((post, index) => (
-            <article key={index} className="mb-8 p-6 bg-white rounded-lg shadow-lg transform transition-transform duration-200 hover:-translate-y-1">
-              <Link href={post.url} className="block" target="_blank" rel="noopener noreferrer">
-                <div className="flex flex-col space-y-2">
-                  <h2 className="text-xl md:text-2xl font-bold text-gray-800 hover:text-gray-600">
-                    {post.title}
-                  </h2>
-                  <time className="text-sm text-gray-500">{post.date}</time>
-                  <p className="text-gray-600 mt-2">{post.description}</p>
-                  <div className="text-gray-800 text-sm font-medium hover:text-gray-600 mt-2 transition-colors duration-200">
-                    Read more →
-                  </div>
-                </div>
+    <PageShell>
+      <h1 className="text-3xl md:text-4xl font-bold font-serif text-center mx-auto pb-2">Blog</h1>
+      <p className="text-center text-muted mx-auto max-w-[40em] pb-12">
+        Notes on software, cooking, and what happens when you mix the two.
+      </p>
+
+      {/* Featured: the most recent post, rendered larger */}
+      {featured && (
+        <article className={`group relative max-w-[50em] mx-auto mb-12 p-6 md:p-10 ${cardSurface}`}>
+          <div className="flex flex-col space-y-3">
+            <p className="text-xs uppercase tracking-[0.18em] text-accent-strong font-semibold">
+              Latest
+            </p>
+            <h2 className="text-2xl md:text-4xl font-bold font-serif leading-tight text-foreground group-hover:text-muted-strong transition-colors duration-200">
+              <Link href={`/blog/${featured.slug}`} className={stretchedLinkClass}>
+                {featured.title}
               </Link>
+            </h2>
+            <PostMetaRow post={featured} />
+            <p className="text-base md:text-lg text-muted-strong">
+              {featured.description}
+            </p>
+            <div className="inline-flex items-center gap-1 text-foreground text-sm md:text-base font-semibold mt-2 transition-transform duration-200 group-hover:translate-x-1">
+              Read the post
+              <span aria-hidden="true">→</span>
+            </div>
+          </div>
+        </article>
+      )}
+
+      {rest.length > 0 && (
+        <div className="max-w-[50em] mx-auto">
+          <h2 className="text-xs uppercase tracking-[0.18em] text-muted font-semibold mb-4 text-center md:text-left">
+            More writing
+          </h2>
+          {rest.map((post) => (
+            <article key={post.slug} className={`reveal group relative mb-6 p-6 ${cardSurface}`}>
+              <div className="flex flex-col space-y-2">
+                <h3 className="text-xl md:text-2xl font-bold font-serif text-foreground group-hover:text-muted-strong transition-colors duration-200">
+                  <Link href={`/blog/${post.slug}`} className={stretchedLinkClass}>
+                    {post.title}
+                  </Link>
+                </h3>
+                <PostMetaRow post={post} />
+                <p className="text-muted-strong mt-2">{post.description}</p>
+                <div className="inline-flex items-center gap-1 text-foreground text-sm font-semibold mt-2 transition-transform duration-200 group-hover:translate-x-1">
+                  Read more
+                  <span aria-hidden="true">→</span>
+                </div>
+              </div>
             </article>
           ))}
         </div>
-      </main>
-      <Footer />
-    </div>
+      )}
+
+      <div className="mt-12">
+        <NewsletterSignup variant="card" />
+      </div>
+    </PageShell>
   );
 }

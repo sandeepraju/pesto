@@ -1,0 +1,29 @@
+---
+title: "Pantry Pal"
+description: "A kitchen-organisation app that helps reduce food waste. Log your pantry, fridge, and freezer; Pantry Pal suggests recipes from what you already have and warns you before things spoil."
+image: /img/projects/pantry-pal.jpeg
+portrait: false
+year: 2024
+role: "Solo build"
+tech: [Next.js, TypeScript, Supabase, Tailwind]
+url: https://github.com/gpestocchi/pantry-pal
+order: 6
+---
+
+## What it is
+
+A kitchen-inventory tracker focused on the one thing inventory apps usually skip: surfacing what's about to expire before it does.
+
+## How it works
+
+You log items as you buy them with a guess at shelf life. The app shows three lists:
+
+1. **Fresh** — bought in the last few days
+2. **Use soon** — within the warning window
+3. **Use today** — about to expire
+
+The recipe-suggestion side is intentionally weak: it pattern-matches against what you have and returns *categories* (pasta dish, soup, omelette) rather than fully-baked recipes. You bring the technique; the app brings the constraint.
+
+## What I learned
+
+Inventory apps are about *friction at logging time*. If logging an ingredient takes more than ten seconds, you stop doing it. The whole UI is one screen with one search box and one big tap zone. Most additions are three taps.
