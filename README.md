@@ -176,6 +176,30 @@ For your resume, replace `public/doc/Giovanni-Pestocchi-Resume.pdf` and update t
 
 For your photos, replace files in `public/img/` (keep `profile.jpg` and the `projects/` directory naming).
 
+### Newsletter signup
+
+The signup card (rendered on the home page and at the bottom of `/blog`) is a static HTML form that POSTs directly to a newsletter provider — no JS, no API key on your site, no server route. It works in the static export because the browser submits straight to the provider's embed endpoint.
+
+The template ships pointing at [Buttondown](https://buttondown.com), a minimalist newsletter service (free up to 100 subscribers, paid above), but anything that accepts a form POST with a field named `email` works — ConvertKit, MailerLite, Beehiiv, Mailchimp, etc.
+
+Configure under `newsletter` in `src/data/config.json`:
+
+```json
+"newsletter": {
+  "enabled": true,
+  "action": "https://buttondown.email/api/emails/embed-subscribe/YOUR_USERNAME",
+  "provider": "Buttondown",
+  "blurb": "Occasional posts on software, cooking, and what happens when you mix the two. One email per post, no spam, unsubscribe whenever."
+}
+```
+
+- **`enabled`** — set to `false` (or remove the block) to hide the signup everywhere.
+- **`action`** — the provider's embed URL. For Buttondown, sign up, then use `https://buttondown.email/api/emails/embed-subscribe/<your-username>`. For other providers, copy the `action` URL from their HTML embed snippet.
+- **`provider`** — label shown in the "Delivered via …" footer. Cosmetic only.
+- **`blurb`** — the paragraph above the input.
+
+The form opens the provider's confirmation page in a new tab on submit (`target="_blank"`). If you want an inline "thanks, check your inbox" without a new tab, convert `src/app/components/NewsletterSignup.tsx` to a client component and submit via `fetch()`.
+
 ## Customising the look
 
 ### Theme
