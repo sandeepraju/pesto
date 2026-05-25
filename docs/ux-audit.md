@@ -498,49 +498,50 @@ Looks like that page didn't make the cut. Try:
 
 Severity: **P0** = ship blocker / broken · **P1** = high-impact polish · **P2** = system-level upgrade · **P3** = ambition
 Effort: **S** = under 30 min · **M** = half day · **L** = multi-day
+Status: ✅ = closed · 🟡 = partial · ⬜ = open · *(all 40 closed in commits `db62245…3ad8c12` on this branch)*
 
-| # | Item | Severity | Effort | File(s) |
-|---|---|---|---|---|
-| 1 | Remove `font-family: Arial` from body so Geist renders | P0 | S | `src/app/globals.css:21` |
-| 2 | Fix `md: max-w-[70%]` typo (remove space) | P0 | S | `src/app/about/page.tsx:25` |
-| 3 | Remove `${image}` interpolation from className | P0 | S | `src/app/projects/ImageProject.tsx:13` |
-| 4 | Replace `display-block` with `block` | P0 | S | `src/app/projects/TextProject.tsx:12,13` |
-| 5 | Remove empty `<header>` from Home or move Nav into it | P0 | S | `src/app/page.tsx:23–24` |
-| 6 | Replace `example.com` blog URLs with real posts (or remove cards) | P0 | M | `src/app/blog/page.tsx` |
-| 7 | Replace placeholder social URLs | P0 | S | `src/data/config.json:9–14` |
-| 8 | Add visible focus rings sitewide via Tailwind `focus-visible:` utilities | P0 | M | global + all components |
-| 9 | Left-align About prose, cap to `max-w-[65ch]` | P0 | S | `src/app/about/page.tsx:25` |
-| 10 | Move Merriweather import into `layout.tsx`, remove duplicates | P1 | S | `src/app/page.tsx:14`, `Header.tsx:5` |
-| 11 | Fix Nav icon alignment with `flex items-center gap-2` | P1 | S | `src/app/components/Nav.tsx` |
-| 12 | Raise footer text to ≥14px; rewrite as real footer | P1 | M | `src/app/components/Footer.tsx` |
-| 13 | Remove `<hr>` from Header | P1 | S | `src/app/components/Header.tsx:26` |
-| 14 | Monochrome the Resume PDF icon (or commit to red as brand) | P1 | S | `src/app/components/Nav.tsx:29` |
-| 15 | Remove duplicate "🍝" caption (alt OR `<p>`, not both) | P1 | S | `src/app/about/page.tsx:18,23` |
-| 16 | Standardize all hover durations to 200ms | P1 | S | `about/page.tsx:15` + audit others |
-| 17 | Add `aria-label="opens in new tab"` to all `target="_blank"` links | P1 | S | sitewide |
-| 18 | Add `<PageShell>` primitive, deduplicate page outer grids | P1 | M | new component |
-| 19 | Show description on `ImageProject` (always-visible or focus/hover reveal) | P1 | M | `src/app/projects/ImageProject.tsx` |
-| 20 | Fix `alt` fallback in `ImageProject` (don't render at all if no title) | P1 | S | `src/app/projects/ImageProject.tsx:17` |
-| 21 | Set `priority` only on the first 1–2 project images | P1 | S | `src/app/projects/page.tsx` |
-| 22 | Add per-route `metadata` exports (title, description) | P1 | M | each `page.tsx` |
-| 23 | Add `not-found.tsx` with on-brand 404 | P1 | M | new file |
-| 24 | Add OG image + Twitter card metadata | P1 | M | `src/app/layout.tsx` |
-| 25 | Remove `react-parallax-tilt` (or move behind reduced-motion guard) | P1 | S | `src/app/page.tsx` |
-| 26 | Replace `react-responsive-masonry` with CSS columns | P1 | M | `src/app/projects/page.tsx` |
-| 27 | Add design tokens to `globals.css` (color, type, spacing, radius, shadow, motion) | P2 | M | `src/app/globals.css` + `tailwind.config.ts` |
-| 28 | Build `<Container>`, `<Section>`, `<Stack>` primitives | P2 | M | new components |
-| 29 | Build unified `<Card>` primitive; refactor `ImageProject`, `TextProject`, blog `<article>` | P2 | L | new component + refactors |
-| 30 | Move `'use client'` boundary down — make `/about` and `/blog` server components | P2 | M | each `page.tsx` |
-| 31 | Ship dark mode (variables exist; add `next-themes`) | P2 | M | `globals.css`, `layout.tsx` |
-| 32 | Per-project case study pages at `/projects/[slug]` | P2 | L | new route group |
-| 33 | Migrate blog to MDX with frontmatter | P2 | L | new content pipeline |
-| 34 | Add `sitemap.ts` and `robots.ts` | P2 | S | new files |
-| 35 | Add JSON-LD `Person` + `BlogPosting` schema | P2 | M | new metadata helper |
-| 36 | Redesign Home with two-column hero + selected work + recent writing | P3 | L | `src/app/page.tsx` |
-| 37 | Pesto-brand palette (basil + cream + olive), swap Merriweather for Fraunces or Newsreader | P3 | M | `globals.css`, `layout.tsx`, `tailwind.config.ts` |
-| 38 | View Transitions API on project card → case study route | P3 | L | new |
-| 39 | Add `/now`, `/uses`, `/colophon`, `/recipes/pesto` content pages | P3 | L | new routes |
-| 40 | Add `placeholder="blur"` + build-time `blurDataURL` generation | P3 | M | image pipeline |
+| # | Status | Item | Severity | Effort | File(s) |
+|---|---|---|---|---|---|
+| 1 | ✅ | Remove `font-family: Arial` from body so Geist renders | P0 | S | `src/app/globals.css:21` |
+| 2 | ✅ | Fix `md: max-w-[70%]` typo (remove space) | P0 | S | `src/app/about/page.tsx:25` |
+| 3 | ✅ | Remove `${image}` interpolation from className | P0 | S | `src/app/projects/ImageProject.tsx:13` |
+| 4 | ✅ | Replace `display-block` with `block` | P0 | S | `src/app/projects/TextProject.tsx:12,13` |
+| 5 | ✅ | Remove empty `<header>` from Home or move Nav into it | P0 | S | `src/app/page.tsx:23–24` |
+| 6 | ✅ | Replace `example.com` blog URLs with real posts (or remove cards) | P0 | M | `src/app/blog/page.tsx` |
+| 7 | ✅ | Replace placeholder social URLs | P0 | S | `src/data/config.json:9–14` |
+| 8 | ✅ | Add visible focus rings sitewide via Tailwind `focus-visible:` utilities | P0 | M | global + all components |
+| 9 | ✅ | Left-align About prose, cap to `max-w-[65ch]` | P0 | S | `src/app/about/page.tsx:25` |
+| 10 | ✅ | Move Merriweather import into `layout.tsx`, remove duplicates | P1 | S | `src/app/page.tsx:14`, `Header.tsx:5` |
+| 11 | ✅ | Fix Nav icon alignment with `flex items-center gap-2` | P1 | S | `src/app/components/Nav.tsx` |
+| 12 | ✅ | Raise footer text to ≥14px; rewrite as real footer | P1 | M | `src/app/components/Footer.tsx` |
+| 13 | ✅ | Remove `<hr>` from Header | P1 | S | `src/app/components/Header.tsx:26` |
+| 14 | ✅ | Monochrome the Resume PDF icon (or commit to red as brand) | P1 | S | `src/app/components/Nav.tsx:29` |
+| 15 | ✅ | Remove duplicate "🍝" caption (alt OR `<p>`, not both) | P1 | S | `src/app/about/page.tsx:18,23` |
+| 16 | ✅ | Standardize all hover durations to 200ms | P1 | S | `about/page.tsx:15` + audit others |
+| 17 | ✅ | Add `aria-label="opens in new tab"` to all `target="_blank"` links | P1 | S | sitewide |
+| 18 | ✅ | Add `<PageShell>` primitive, deduplicate page outer grids | P1 | M | new component |
+| 19 | ✅ | Show description on `ImageProject` (always-visible or focus/hover reveal) | P1 | M | `src/app/projects/ImageProject.tsx` |
+| 20 | ✅ | Fix `alt` fallback in `ImageProject` (don't render at all if no title) | P1 | S | `src/app/projects/ImageProject.tsx:17` |
+| 21 | ✅ | Set `priority` only on the first 1–2 project images | P1 | S | `src/app/projects/page.tsx` |
+| 22 | ✅ | Add per-route `metadata` exports (title, description) | P1 | M | each `page.tsx` |
+| 23 | ✅ | Add `not-found.tsx` with on-brand 404 | P1 | M | new file |
+| 24 | ✅ | Add OG image + Twitter card metadata (1200×630 generated at build) | P1 | M | `src/app/layout.tsx`, `scripts/generate-og-image.mjs` |
+| 25 | ✅ | Remove `react-parallax-tilt` (or move behind reduced-motion guard) | P1 | S | `src/app/page.tsx` |
+| 26 | ✅ | Replace `react-responsive-masonry` with CSS columns | P1 | M | `src/app/projects/page.tsx` |
+| 27 | ✅ | Add design tokens to `globals.css` (color, type, spacing, radius, shadow, motion) | P2 | M | `src/app/globals.css` + `tailwind.config.ts` |
+| 28 | ✅ | Build `<Container>`, `<Section>`, `<Stack>` primitives | P2 | M | `src/app/components/primitives.tsx` |
+| 29 | ✅ | Build unified `<Card>` primitive; refactor `ImageProject`, `TextProject`, blog `<article>` | P2 | L | `src/lib/styles.ts` |
+| 30 | ✅ | Move `'use client'` boundary down — make `/about` and `/blog` server components | P2 | M | each `page.tsx` |
+| 31 | ✅ | Ship dark mode (variables exist; add `next-themes`) | P2 | M | `globals.css`, `layout.tsx`, `ThemeToggle.tsx` |
+| 32 | ✅ | Per-project case study pages at `/projects/[slug]` | P2 | L | new route group |
+| 33 | ✅ | Migrate blog to MDX with frontmatter | P2 | L | new content pipeline |
+| 34 | ✅ | Add `sitemap.ts` and `robots.ts` | P2 | S | new files |
+| 35 | ✅ | Add JSON-LD `Person` + `BlogPosting` schema | P2 | M | `layout.tsx`, `blog/[slug]/page.tsx` |
+| 36 | ✅ | Redesign Home with two-column hero + selected work + recent writing | P3 | L | `src/app/page.tsx` |
+| 37 | ✅ | Pesto-brand palette (basil + cream + olive), swap Merriweather for Fraunces or Newsreader | P3 | M | `globals.css`, `layout.tsx`, `tailwind.config.ts` |
+| 38 | ✅ | View Transitions API on project card → case study route | P3 | L | new |
+| 39 | ✅ | Add `/now`, `/uses`, `/colophon`, `/recipes/pesto` content pages | P3 | L | new routes |
+| 40 | ✅ | Add `placeholder="blur"` + build-time `blurDataURL` generation | P3 | M | image pipeline |
 
 ---
 
