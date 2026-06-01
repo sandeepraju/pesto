@@ -18,7 +18,7 @@ type ContainerSize = "prose" | "content" | "wide" | "full";
 const containerSize: Record<ContainerSize, string> = {
   prose: "max-w-[65ch]",
   content: "max-w-3xl",
-  wide: "max-w-screen-lg",
+  wide: "max-w-(--breakpoint-lg)",
   full: "max-w-full",
 };
 

@@ -53,7 +53,7 @@ function PostMetaRow({ post }: { post: PostMeta }) {
  * pattern that keeps valid HTML (no nested <a>).
  */
 const stretchedLinkClass =
-  "static after:absolute after:inset-0 after:content-[''] focus:outline-none";
+  "static after:absolute after:inset-0 after:content-[''] focus:outline-hidden";
 
 export default function Blog() {
   const posts = getAllPosts();
@@ -82,7 +82,7 @@ export default function Blog() {
             <p className="text-base md:text-lg text-muted-strong">
               {featured.description}
             </p>
-            <div className="inline-flex items-center gap-1 text-foreground text-sm md:text-base font-semibold mt-2 transition-transform duration-200 group-hover:translate-x-1">
+            <div className="inline-flex items-center gap-1 text-foreground text-sm md:text-base font-semibold transition-transform duration-200 group-hover:translate-x-1">
               Read the post
               <span aria-hidden="true">→</span>
             </div>
@@ -104,8 +104,8 @@ export default function Blog() {
                   </Link>
                 </h3>
                 <PostMetaRow post={post} />
-                <p className="text-muted-strong mt-2">{post.description}</p>
-                <div className="inline-flex items-center gap-1 text-foreground text-sm font-semibold mt-2 transition-transform duration-200 group-hover:translate-x-1">
+                <p className="text-muted-strong">{post.description}</p>
+                <div className="inline-flex items-center gap-1 text-foreground text-sm font-semibold transition-transform duration-200 group-hover:translate-x-1">
                   Read more
                   <span aria-hidden="true">→</span>
                 </div>

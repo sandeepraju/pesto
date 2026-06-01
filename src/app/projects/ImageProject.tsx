@@ -32,7 +32,7 @@ export default function ImageProject({ title, description, image, portrait, href
           blurDataURL={blurDataURL}
           style={transitionName ? { viewTransitionName: transitionName } : undefined}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10" aria-hidden="true"></div>
+        <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-black/10" aria-hidden="true"></div>
         <div className="relative z-10 text-left text-white">
           <h2 className="text-2xl md:text-3xl font-bold font-serif drop-shadow-md">{title}</h2>
           {description && (
