@@ -1,6 +1,56 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-strong: var(--muted-strong);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-soft: var(--accent-soft);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-serif), Fraunces, Georgia, serif;
+
+  /* Radius scale */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  /* Shadow scale (warm-tinted) */
+  --shadow-sm: 0 1px 2px rgba(26, 26, 26, 0.04);
+  --shadow-md: 0 4px 12px rgba(26, 26, 26, 0.06);
+  --shadow-lg: 0 12px 24px -8px rgba(26, 26, 26, 0.10);
+  --shadow-xl: 0 24px 48px -12px rgba(26, 26, 26, 0.14);
+
+  /* Motion */
+  --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-duration-fast: 150ms;
+  --transition-duration-base: 200ms;
+  --transition-duration-slow: 400ms;
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
 
 :root {
   /* Neutrals */
@@ -17,23 +67,12 @@
   --accent-strong: #2c4329;  /* pine */
   --accent-soft: #d4ddd0;    /* young basil, for subtle washes */
 
-  /* Radius scale */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --radius-pill: 9999px;
-
-  /* Shadow scale (warm-tinted) */
-  --shadow-sm: 0 1px 2px rgba(26, 26, 26, 0.04);
-  --shadow-md: 0 4px 12px rgba(26, 26, 26, 0.06);
-  --shadow-lg: 0 12px 24px -8px rgba(26, 26, 26, 0.10);
-  --shadow-xl: 0 24px 48px -12px rgba(26, 26, 26, 0.14);
-
-  /* Motion */
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --duration-fast: 150ms;
-  --duration-base: 200ms;
-  --duration-slow: 400ms;
+  /*
+   * Radius, shadow, and motion tokens now live in the `@theme` block above
+   * (the single source of truth that also generates Tailwind utilities).
+   * Only the color tokens remain here because they are overridden at runtime
+   * by the dark-mode rules below.
+   */
 }
 
 /* OS preference — only applies when the user hasn't picked manually. */

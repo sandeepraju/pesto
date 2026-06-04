@@ -86,7 +86,7 @@ export default async function ProjectCaseStudy({ params }: { params: Promise<Par
           const blurDataURL = getBlurDataURL(project.image);
           return (
             <figure className="mb-10 -mx-2 md:-mx-6">
-              <div className="relative w-full overflow-hidden rounded-lg border border-border shadow-lg aspect-[16/10]">
+              <div className="relative w-full overflow-hidden rounded-lg border border-border shadow-lg aspect-16/10">
                 <Image
                   src={project.image}
                   alt={`${project.title} preview`}
