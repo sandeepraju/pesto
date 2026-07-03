@@ -24,9 +24,10 @@
     "reading-time": "^1.5.0"
   },
   "overrides": {
-    "next@16.2.6": {
+    "next": {
       "postcss": "8.5.10"
-    }
+    },
+    "@babel/core": "7.29.6"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
